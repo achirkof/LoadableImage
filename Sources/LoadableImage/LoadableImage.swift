@@ -11,10 +11,12 @@ import SwiftUI
 public struct LoadableImage: View {
     @ObservedObject var imageManager: ImageManager
     
+    private let contentMode: ContentMode
     private let placeholder: UIImage?
     
-    public init(imageURL: String, placeholder: UIImage? = nil) {
+    public init(imageURL: String, contentMode: ContentMode, placeholder: UIImage? = nil) {
         self.imageManager = ImageManager(imageURL: imageURL)
+        self.contentMode = contentMode
         self.placeholder = placeholder
     }
     
@@ -45,7 +47,7 @@ public struct LoadableImage: View {
                 return AnyView(
                     Image(uiImage: image)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: contentMode)
                 )
                 
             case .failure:
