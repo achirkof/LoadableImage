@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 13.0, macOS 10.15, *)
-public struct LoadableImage: View {
+public struct ImageLoadable: View {
     @ObservedObject var imageManager: ImageManager
     
     private let contentMode: ContentMode
