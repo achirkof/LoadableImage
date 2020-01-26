@@ -13,49 +13,43 @@ public class ImageManager: ObservableObject {
     @Published public var state: ImageManagerState = .loading
 
     private let imageURL: String
+    private var cancellable: AnyCancellable?
 
     public init(imageURL: String) {
         self.imageURL = imageURL
     }
     
-    public func load() {}
-
-//    public func load() {
-//        guard let url = URL(string: imageURL) else {
-//            print("Broken URL")
-//            return
-//        }
-//
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-//                print("Unexpected response: \(response.statusCode)")
-//                DispatchQueue.main.async {
-//                    self.state = .fetched(.failure(.loadError))
-//                }
-//            }
-//
-//            if let error = error {
-//                print("Error loading image: \(error)")
-//                DispatchQueue.main.async {
-//                    self.state = .fetched(.failure(.generic(error)))
-//                }
-//            }
-//
-//            guard let imageData = data,
-//                let loadedImage = UIImage(data: imageData) else {
-//                print("No data received")
-//                DispatchQueue.main.async {
-//                    self.state = .fetched(.failure(.loadError))
-//                }
-//                return
-//            }
-//
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
-//                self.state = .fetched(.success(loadedImage))
-//            }
-//
-//        }.resume()
-//    }
+    public func load() {
+        guard let url = URL(string: imageURL) else {
+            self.state = .fetched(.failure(.brokenUrl))
+            return
+        }
+        
+        let imageDataPublisher = URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+        
+        cancellable = imageDataPublisher
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { (completion) in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.state = .fetched(.failure(.generic(error)))
+                    break
+                }
+            }, receiveValue: { (data) in
+                guard let image = UIImage(data: data) else {
+                    self.state = .fetched(.failure(.brokenData))
+                    return
+                }
+                self.state = .fetched(.success(image))
+            })
+    }
+    
+    public func cancel() {
+        cancellable?.cancel()
+    }
 }
 
 public enum ImageManagerState: Equatable {
@@ -75,6 +69,8 @@ public enum ImageManagerState: Equatable {
 }
 
 public enum ImageManagerError: Error, Equatable {
+    case brokenUrl
+    case brokenData
     case loadError
     case generic(Error)
     

@@ -10,10 +10,14 @@ import XCTest
 
 class ImageManagerTests: XCTestCase {
     
-    func test_WhenInit_ShouldSetStateToLoading() {
+    func test_Init_ShouldSetStateToLoading() {
         let imageURL = "http://test.com/media/test_image.png"
         let sut = ImageManager(imageURL: imageURL)
         
         XCTAssertEqual(sut.state, .loading)
+    }
+    
+    func test_Load_ShouldReturnImage() {
+        
     }
 }

@@ -32,7 +32,9 @@ public struct ImageLoadable: View {
         imageManager.load()
     }
     
-    private func cancelLoad() {}
+    private func cancelLoad() {
+        imageManager.cancel()
+    }
     
     private var contentView: AnyView {
         switch imageManager.state {
