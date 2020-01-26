@@ -18,7 +18,7 @@ class ImageCacheTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_ImageCache_WhenSave_ShouldStoreImage() {
+    func test_ImageCache_WhenSave_ShouldStoreImageData() {
         let sut = ImageCache()
         let imageData = UIImage.make(withColor: .red).pngData()!
         let imageName = "test_image.png"
@@ -33,6 +33,26 @@ class ImageCacheTests: XCTestCase {
         
         XCTAssertEqual(savedMedia?.mediaData, imageData)
         XCTAssertEqual(savedMedia?.mediaName, imageName)
+    }
+    
+    func test_ImageCache_WhenLoad_ShouldReturnImageData() {
+        let sut = ImageCache()
+        let imageData = UIImage.make(withColor: .red).pngData()!
+        let imageName = "test_image.png"
+        let mediaURL = "http://test.com/media/\(imageName)"
+        var receivedMedia: Media?
+        
+        sut.save(media: imageData, with: imageName) { _ in }
+        
+        let promise = expectation(description: "Wait for receive media")
+        sut.load(media: mediaURL) { (result) in
+            receivedMedia = try? result.get()
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 1.0)
+        
+        XCTAssertEqual(receivedMedia?.mediaData, imageData)
+        XCTAssertEqual(receivedMedia?.mediaName, imageName)
     }
 }
 
