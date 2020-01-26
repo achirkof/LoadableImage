@@ -16,14 +16,15 @@ public class ImageCache {
         self.store = store
     }
 
-    public func save(media mediaData: Data, with name: String, completion: @escaping CacheResult) {
-        guard let url = reference(for: name) else {
-            completion(.failure(.invalidReference))
+    public func save(media mediaData: Data, with mediaURL: String, completion: @escaping CacheResult) {
+        guard let mediaName = URL(string: mediaURL)?.lastPathComponent,
+            let url = reference(for: mediaName) else {
+                completion(.failure(.invalidReference))
             return
         }
         
         if store.createFile(atPath: url.path, contents: mediaData, attributes: nil) {
-            completion(.success(.init(mediaData: mediaData, mediaName: name)))
+            completion(.success(.init(mediaData: mediaData, mediaName: mediaName)))
         } else {
             completion(.failure(.failedToSave))
         }

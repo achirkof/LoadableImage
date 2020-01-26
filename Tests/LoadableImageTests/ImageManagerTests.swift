@@ -18,6 +18,9 @@ class ImageManagerTests: XCTestCase {
     }
     
     func test_Load_ShouldReturnImage() {
+        let imageURL = "http://test.com/media/test_image.png"
+        let sut = ImageManager(imageURL: imageURL)
         
+        sut.load()
     }
 }

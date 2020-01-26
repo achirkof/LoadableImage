@@ -11,44 +11,72 @@ import SwiftUI
 @available(iOS 13.0, macOS 10.15, *)
 public class ImageManager: ObservableObject {
     @Published public var state: ImageManagerState = .loading
-
+    
     private let imageURL: String
+    private let cache: ImageCache?
     private var cancellable: AnyCancellable?
-
-    public init(imageURL: String) {
+    
+    public init(imageURL: String, cache: ImageCache? = .init()) {
         self.imageURL = imageURL
+        self.cache = cache
     }
     
     public func load() {
         guard let url = URL(string: imageURL) else {
-            self.state = .fetched(.failure(.brokenUrl))
+            state = .fetched(.failure(.brokenUrl))
             return
         }
         
-        let imageDataPublisher = URLSession.shared.dataTaskPublisher(for: url)
+        let remoteImageDataPublisher = URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
         
-        cancellable = imageDataPublisher
+        let cacheImageDataPublisher = loadFromCache(imageURL: imageURL)
+            .map { $0 }
+        
+        cancellable = cacheImageDataPublisher
+            .map { $0 }
+            .catch { _ in
+                remoteImageDataPublisher
+            }
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { (completion) in
+            .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
                     break
                 case .failure(let error):
                     self.state = .fetched(.failure(.generic(error)))
-                    break
                 }
-            }, receiveValue: { (data) in
+            }, receiveValue: { data in
                 guard let image = UIImage(data: data) else {
                     self.state = .fetched(.failure(.brokenData))
                     return
                 }
                 self.state = .fetched(.success(image))
+                self.saveToCache(imageData: data, imageURL: self.imageURL)
             })
     }
     
     public func cancel() {
         cancellable?.cancel()
+    }
+    
+    private func saveToCache(imageData: Data, imageURL: String) {
+        cache?.save(media: imageData, with: imageURL) { _ in }
+    }
+    
+    private func loadFromCache(imageURL: String) -> AnyPublisher<Data, Error> {
+        return Future<Data, Error> { promise in
+            self.cache?.load(media: imageURL) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let media):
+                        promise(.success(media.mediaData))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }
 

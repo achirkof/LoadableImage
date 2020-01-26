@@ -22,10 +22,11 @@ class ImageCacheTests: XCTestCase {
         let sut = ImageCache()
         let imageData = UIImage.make(withColor: .red).pngData()!
         let imageName = "test_image.png"
+        let mediaURL = "http://test.com/media/\(imageName)"
         var savedMedia: Media?
         
         let promise = expectation(description: "Wait for save media")
-        sut.save(media: imageData, with: imageName) { (result) in
+        sut.save(media: imageData, with: mediaURL) { (result) in
             savedMedia = try? result.get()
             promise.fulfill()
         }
@@ -42,7 +43,7 @@ class ImageCacheTests: XCTestCase {
         let mediaURL = "http://test.com/media/\(imageName)"
         var receivedMedia: Media?
         
-        sut.save(media: imageData, with: imageName) { _ in }
+        sut.save(media: imageData, with: mediaURL) { _ in }
         
         let promise = expectation(description: "Wait for receive media")
         sut.load(media: mediaURL) { (result) in
