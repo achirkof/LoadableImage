@@ -16,7 +16,10 @@ public class ImageManager: ObservableObject {
     private let cache: ImageCache?
     private var cancellable: AnyCancellable?
     
-    public init(imageURL: String, cache: ImageCache? = .init()) {
+    public init(
+        imageURL: String,
+        cache: ImageCache? = .init()
+    ) {
         self.imageURL = imageURL
         self.cache = cache
     }

@@ -12,11 +12,18 @@ public struct ImageLoadable: View {
     @ObservedObject var imageManager: ImageManager
     
     private let contentMode: ContentMode
+    private let renderingMode: Image.TemplateRenderingMode
     private let placeholder: UIImage?
     
-    public init(imageURL: String, contentMode: ContentMode, placeholder: UIImage? = nil) {
+    public init(
+        imageURL: String,
+        contentMode: ContentMode = .fit,
+        renderingMode: Image.TemplateRenderingMode = .original,
+        placeholder: UIImage? = nil
+    ) {
         self.imageManager = ImageManager(imageURL: imageURL)
         self.contentMode = contentMode
+        self.renderingMode = renderingMode
         self.placeholder = placeholder
     }
     
@@ -49,6 +56,7 @@ public struct ImageLoadable: View {
                 return AnyView(
                     Image(uiImage: image)
                         .resizable()
+                        .renderingMode(renderingMode)
                         .aspectRatio(contentMode: contentMode)
                 )
                 
