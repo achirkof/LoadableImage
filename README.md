@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/achirkov/LoadableImage.png)](https://travis-ci.org/achirkov/LoadableImage)
+[![Build Status](https://travis-ci.com/achirkof/LoadableImage.svg?branch=master)](https://travis-ci.com/achirkof/LoadableImage)
 [![codecov](https://codecov.io/gh/achirkov/LoadableImage/branch/master/graph/badge.svg)](https://codecov.io/gh/achirkov/LoadableImage)
 
 # LoadableImage
