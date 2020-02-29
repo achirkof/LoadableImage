@@ -1,9 +1,7 @@
-language: swift
-xcode_project: LoadableImage.xcodeproj
-xcode_scheme: LoadableImageTests
-xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
-
-sudo: false # faster builds
-
+language:
+  - swift
+osx_image: xcode11.1
+script:
+  - xcodebuild -scheme LoadableImage -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=13.1' build test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
