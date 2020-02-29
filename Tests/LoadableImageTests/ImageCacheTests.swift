@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import LoadableImage
+@testable import LoadableImage
 
 class ImageCacheTests: XCTestCase {
     

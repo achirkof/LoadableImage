@@ -10,6 +10,7 @@ import Foundation
 /**
  This is a equality on any 2 instance of Error.
  */
+
 public func areEqual(_ lhs: Error, _ rhs: Error) -> Bool {
     return lhs.reflectedString == rhs.reflectedString
 }
@@ -24,7 +25,6 @@ public extension Error {
     func isEqual(to: Self) -> Bool {
         return self.reflectedString == to.reflectedString
     }
-
 }
 
 public extension NSError {
