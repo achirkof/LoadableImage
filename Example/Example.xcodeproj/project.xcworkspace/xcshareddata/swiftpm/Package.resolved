@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LoadableImage",
+        "repositoryURL": "https://github.com/achirkof/LoadableImage.git",
+        "state": {
+          "branch": null,
+          "revision": "1af330a52b4a53fa758de193a890b315e7e2e398",
+          "version": "0.0.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

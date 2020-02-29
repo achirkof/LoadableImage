@@ -28,5 +28,6 @@ let package = Package(
             name: "LoadableImageTests",
             dependencies: ["LoadableImage"]),
     ],
+    exclude: ["Example"],
     swiftLanguageVersions: [.v5]
 )
