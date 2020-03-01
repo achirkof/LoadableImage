@@ -12,7 +12,7 @@ This is a lightweight package provided easy and powerful way to show remote imag
 
 ### How to use
 
-Usage of ImageLoadable as simple as SwiftUI *Image*.
+Usage of __ImageLoadable__ as simple as SwiftUI __Image__.
 
 ```swift
 import SwiftUI
@@ -51,15 +51,17 @@ struct ContentView: View {
 
 ```
 
-ImageLoadable has one *required* parameter:
+ImageLoadable has one *__required__* parameter:
 
-`imageURL` - provide an image remote URL;
+`imageURL: String` - provide a remote image URL;
 
-and two *optional* parameters:
+and two *__optional__* parameters:
 
-`contentMode` - provide image content mode. Default walue is `ContentMode.fit`.
+`contentMode: ContentMode` - provide image content mode. Default walue is `ContentMode.fit`.
 
-`placeholder` - provide image placeholder you want to display if download failed. Default image placeholder is SFSymbol named 'wifi.exclamationmark'  [![Imgur](https://imgur.com/hbK2bJb.png)](https://imgur.com/hbK2bJb.png)
+`placeholder: UIImage` - provide image placeholder you want to display if download failed. Default image placeholder is SFSymbol named *wifi.exclamationmark*  [![Imgur](https://imgur.com/hbK2bJb.png)](https://imgur.com/hbK2bJb.png)
+
+Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/master/Example) project for further details.
 
 ### Installation
 
