@@ -5,9 +5,6 @@ import PackageDescription
 
 let package = Package(
     name: "LoadableImage",
-    platforms: [
-        .iOS(.v13)
-    ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
@@ -27,6 +24,9 @@ let package = Package(
         .testTarget(
             name: "LoadableImageTests",
             dependencies: ["LoadableImage"]),
+    ],
+    platforms: [
+        .iOS(.v13)
     ],
     exclude: ["Example"],
     swiftLanguageVersions: [.v5]
