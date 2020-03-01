@@ -12,7 +12,7 @@ This is a lightweight package provided easy and powerful way to show remote imag
 
 ### How to use
 
-Usage of ImageLoadable as simple as SwiftUI *Image*.
+Usage of ImageLoadable as simple as SwiftUI `struct Image`.
 
 ```swift
 import SwiftUI
@@ -69,6 +69,6 @@ Once you have your Swift package set up, adding LoadableImage as a dependency is
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "5.0.0")
+    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "0.1.0")
 ]
 ```
