@@ -1,19 +1,18 @@
 // swift-tools-version:5.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
     name: "LoadableImage",
+    platforms: [
+        SupportedPlatform.iOS(SupportedPlatform.IOSVersion.v13)
+    ],
     products: [
-        .library(name: "LoadableImage", targets: ["LoadableImage"]),
+        Product.library(name: "LoadableImage", targets: ["LoadableImage"])
     ],
     dependencies: [],
     targets: [
-        .target(name: "LoadableImage", dependencies: []),
-        .testTarget(name: "LoadableImageTests", dependencies: ["LoadableImage"]),
+        Target.target(name: "LoadableImage", dependencies: [], exclude: ["Example"]),
+        Target.testTarget(name: "LoadableImage", dependencies: [])
     ],
-    platforms: [.iOS(.v13)],
-    exclude: ["Example"],
-    swiftLanguageVersions: [.v5]
+    swiftLanguageVersions: [SwiftVersion.v5]
 )
