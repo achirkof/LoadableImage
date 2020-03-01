@@ -12,7 +12,7 @@ let package = Package(
     dependencies: [],
     targets: [
         Target.target(name: "LoadableImage", dependencies: [], exclude: ["Example"]),
-        Target.testTarget(name: "LoadableImageTests", dependencies: [])
+        Target.testTarget(name: "LoadableImageTests", dependencies: ["LoadableImage"])
     ],
     swiftLanguageVersions: [SwiftVersion.v5]
 )
