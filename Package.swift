@@ -5,11 +5,15 @@ import PackageDescription
 
 let package = Package(
     name: "LoadableImage",
+    platforms: [
+        .iOS(.v13)
+    ],
     products: [
         .library(
             name: "LoadableImage",
             targets: ["LoadableImage"]),
     ],
+    exclude: ["Example"],
     targets: [
         .target(
             name: "LoadableImage",
@@ -17,6 +21,5 @@ let package = Package(
         .testTarget(
             name: "LoadableImageTests",
             dependencies: ["LoadableImage"]),
-    ],
-    exclude: ["Example"]
+    ]
 )
