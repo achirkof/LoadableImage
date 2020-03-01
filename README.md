@@ -74,3 +74,7 @@ dependencies: [
     .package(url: "https://github.com/achirkof/LoadableImage.git", from: "0.1.0")
 ]
 ```
+
+Or just add package to your project:
+1. File → Swift Packages → Add Package Dependency...
+2. Paste the repository URL: https://github.com/achirkof/LoadableImage.git
