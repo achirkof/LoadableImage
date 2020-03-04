@@ -78,3 +78,9 @@ dependencies: [
 Or just add package to your project:
 1. File → Swift Packages → Add Package Dependency...
 2. Paste the repository URL: https://github.com/achirkof/LoadableImage.git
+
+### Future plans
+- [ ] Make `ImageLoadable` Codable to be able use it as type in the model
+- [ ] Make `ImageLoadable` possible to work also with images from `Assets` catalog 
+- [ ] Rewrite from `dataTask` to `downloadTask` to decrease memory usage for big images
+- [ ] Make it possible to *optionally* set caching strategy 
