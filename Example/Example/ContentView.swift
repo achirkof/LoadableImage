@@ -17,7 +17,7 @@ struct ContentView: View {
         VStack {
             HStack {
                 VStack {
-                    ImageLoading(
+                    ImageLoadable(
                         image: URL(string: imageURL)!,
                         contentMode: .fit
                     )
@@ -31,7 +31,7 @@ struct ContentView: View {
                 }
 
                 VStack {
-                    ImageLoading(
+                    ImageLoadable(
                         image: URL(string: brokenImageURL)!,
                         contentMode: .fit,
                         placeholder: UIImage(named: "noImage")
@@ -47,7 +47,7 @@ struct ContentView: View {
             }
 
             VStack {
-                ImageLoading(
+                ImageLoadable(
                     image: UIImage(named: "robot4H1")!,
                     contentMode: .fit
                 )
