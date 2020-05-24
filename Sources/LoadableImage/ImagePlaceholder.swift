@@ -23,9 +23,6 @@ public struct ImagePlaceholder: View {
 
 extension UIImage {
     public static func noImage() -> UIImage {
-        // We have to use SFSymbols for placeholder because
-        // SPM doesn't support image assets yet.
-        // return UIImage(named: "noImage")!.withRenderingMode(.alwaysTemplate)
-        return UIImage(systemName: "wifi.exclamationmark")!.withRenderingMode(.alwaysTemplate)
+         return UIImage(named: "noImage")!.withRenderingMode(.alwaysTemplate)
     }
 }
