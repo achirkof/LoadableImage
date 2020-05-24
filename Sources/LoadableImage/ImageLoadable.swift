@@ -1,70 +1,37 @@
 //
-//  ImageLoadable.swift
-//  LoadableImage
+//  File.swift
+//  
 //
-//  Created by CHIRKOV Andrey on 12.01.2020.
+//  Created by CHIRKOV Andrey on 24.05.2020.
 //
 
-import SwiftUI
+import Combine
+import UIKit
 
-@available(iOS 13.0, macOS 10.15, *)
-public struct ImageLoadable: View {
-    @ObservedObject var imageManager: ImageManager
-    
-    private let contentMode: ContentMode
-    private let renderingMode: Image.TemplateRenderingMode
-    private let placeholder: UIImage?
-    
-    public init(
-        imageURL: String,
-        contentMode: ContentMode = .fit,
-        renderingMode: Image.TemplateRenderingMode = .original,
-        placeholder: UIImage? = nil
-    ) {
-        self.imageManager = ImageManager(imageURL: imageURL)
-        self.contentMode = contentMode
-        self.renderingMode = renderingMode
-        self.placeholder = placeholder
-    }
-    
-    public var body: some View {
-        ZStack {
-            contentView
-        }
-        .onAppear(perform: loadMedia)
-        .onDisappear(perform: cancelLoad)
-    }
-    
-    private func loadMedia() {
-        imageManager.load()
-    }
-    
-    private func cancelLoad() {
-        imageManager.cancel()
-    }
-    
-    private var contentView: AnyView {
-        switch imageManager.state {
-        case .loading:
-            return AnyView(
-                ActivityIndicator(isAnimating: true)
-            )
-            
-        case let .fetched(result):
-            switch result {
-            case let .success(image):
-                return AnyView(
-                    Image(uiImage: image)
-                        .resizable()
-                        .renderingMode(renderingMode)
-                        .aspectRatio(contentMode: contentMode)
-                )
-                
-            case .failure:
-                return (placeholder != nil) ?
-                    AnyView(ImagePlaceholder(placeholder: placeholder!)) :
-                    AnyView(ImagePlaceholder())
+public protocol ImageLoadable {
+    func load() -> AnyPublisher<UIImage, Error>
+}
+
+extension URL: ImageLoadable {
+    public func load() -> AnyPublisher<UIImage, Error> {
+        URLSession
+            .shared
+            .dataTaskPublisher(for: self)
+            .tryMap { data, _ in
+                guard let image = UIImage(data: data) else {
+                    throw ImageManagerError.brokenData
+                }
+
+                return image
             }
-        }
+            .eraseToAnyPublisher()
+    }
+}
+
+extension UIImage: ImageLoadable {
+    public func load() -> AnyPublisher<UIImage, Error> {
+        return Just(self)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
 }
