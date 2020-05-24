@@ -14,26 +14,49 @@ struct ContentView: View {
     private let brokenImageURL = "https://broken.url"
 
     var body: some View {
-        HStack {
-            VStack {
-                ImageLoadable(imageURL: imageURL, contentMode: .fit)
+        VStack {
+            HStack {
+                VStack {
+                    ImageLoadable(
+                        image: URL(string: imageURL)!,
+                        contentMode: .fit
+                    )
                     .frame(width: 140, height: 140)
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(radius: 10)
 
-                Text("Image loaded successfully")
-                    .frame(width: 140)
+                    Text("from URL")
+                        .frame(width: 140)
+                }
+
+                VStack {
+                    ImageLoadable(
+                        image: URL(string: brokenImageURL)!,
+                        contentMode: .fit,
+                        placeholder: UIImage(named: "noImage")
+                    )
+                    .frame(width: 140, height: 140)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+
+                    Text("load Error")
+                        .frame(width: 140)
+                }
             }
 
             VStack {
-                ImageLoadable(imageURL: brokenImageURL, contentMode: .fit, placeholder: UIImage(named: "noImage"))
-                    .frame(width: 140, height: 140)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 10)
+                ImageLoadable(
+                    image: UIImage(named: "robot4H1")!,
+                    contentMode: .fit
+                )
+                .frame(width: 140, height: 140)
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 10)
 
-                Text("Image load error. Show placeholder")
+                Text("from Assets")
                     .frame(width: 140)
             }
         }

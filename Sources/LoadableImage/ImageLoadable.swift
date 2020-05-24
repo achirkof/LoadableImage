@@ -1,5 +1,5 @@
 //
-//  ImageLoadable.swift
+//  Loadable.swift
 //  LoadableImage
 //
 //  Created by CHIRKOV Andrey on 12.01.2020.
@@ -16,12 +16,12 @@ public struct ImageLoadable: View {
     private let placeholder: UIImage?
     
     public init(
-        imageURL: String,
+        image: Loadable,
         contentMode: ContentMode = .fit,
         renderingMode: Image.TemplateRenderingMode = .original,
         placeholder: UIImage? = nil
     ) {
-        self.imageManager = ImageManager(imageURL: imageURL)
+        self.imageManager = ImageManager(loadable: image)
         self.contentMode = contentMode
         self.renderingMode = renderingMode
         self.placeholder = placeholder
@@ -36,7 +36,7 @@ public struct ImageLoadable: View {
     }
     
     private func loadMedia() {
-        imageManager.load()
+        imageManager.loadImage()
     }
     
     private func cancelLoad() {
