@@ -38,7 +38,7 @@ public class ImageCache {
         }
 
         guard let mediaData = store.contents(atPath: url.path) else {
-            completion(.failure(.failedToRetreive))
+            completion(.failure(.failedToRetrieve))
             return
         }
 
@@ -54,7 +54,7 @@ public struct Media {
 public enum CacheError: Error {
     case invalidReference
     case failedToSave
-    case failedToRetreive
+    case failedToRetrieve
 }
 
 extension ImageCache {
