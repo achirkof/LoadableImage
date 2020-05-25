@@ -31,11 +31,11 @@ public struct ImageLoadable: View {
         ZStack {
             contentView
         }
-        .onAppear(perform: loadMedia)
+        .onAppear(perform: loadImage)
         .onDisappear(perform: cancelLoad)
     }
     
-    private func loadMedia() {
+    private func loadImage() {
         imageManager.loadImage()
     }
     
