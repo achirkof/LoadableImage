@@ -12,17 +12,23 @@ import SwiftUI
 public class ImageManager: ObservableObject {
     @Published public var state: ImageManagerState = .loading
 
-    private let loadable: Loadable
+    private let loadable: Loadable?
 
     private var cancellable: AnyCancellable?
 
     init(
-        loadable: Loadable
+        loadable: Loadable?
     ) {
         self.loadable = loadable
     }
 
     public func loadImage() {
+        guard let loadable = loadable
+        else {
+            state = .failToLoad
+            return
+        }
+
         cancellable =
             loadable
             .load()

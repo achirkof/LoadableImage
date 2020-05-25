@@ -10,6 +10,7 @@ import UIKit
 public enum ImageManagerState: Equatable {
     case loading
     case fetched(Result<UIImage, ImageManagerError>)
+    case failToLoad
 
     public static func == (lhs: ImageManagerState, rhs: ImageManagerState) -> Bool {
         switch (lhs, rhs) {
