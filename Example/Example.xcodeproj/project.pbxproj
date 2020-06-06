@@ -39,7 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9218E660247AB2CD0014054A /* LoadableImage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoadableImage; path = ..; sourceTree = "<group>"; };
+		928EA767248258C7000DF9DC /* LoadableImage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoadableImage; path = ..; sourceTree = "<group>"; };
 		92BAB016240ACE8E00F3A3A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92EDE1EE23CB7D2800D6C26C /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92EDE1F123CB7D2800D6C26C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		92EDE1E523CB7D2800D6C26C = {
 			isa = PBXGroup;
 			children = (
-				9218E660247AB2CD0014054A /* LoadableImage */,
+				928EA767248258C7000DF9DC /* LoadableImage */,
 				92EDE1F023CB7D2800D6C26C /* Example */,
 				92EDE1EF23CB7D2800D6C26C /* Products */,
 				92EDE21323CB7DB800D6C26C /* Frameworks */,
@@ -367,6 +367,7 @@
 		92EDE20E23CB7D2A00D6C26C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = MMS552F7Y5;
@@ -386,6 +387,7 @@
 		92EDE20F23CB7D2A00D6C26C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = MMS552F7Y5;

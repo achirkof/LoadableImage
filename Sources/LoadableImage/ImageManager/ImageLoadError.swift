@@ -1,24 +1,21 @@
 //
-//  ImageManagerError.swift
-//  LoadableImage
+//  ImageLoadError.swift
 //
 //  Created by CHIRKOV Andrey on 16.03.2020.
 //
 
 import Foundation
 
-public enum ImageManagerError: Error, Equatable {
-    case brokenUrl
-    case brokenData
+public enum ImageLoadError: Error, Equatable {
+    case notExists
     case loadError
-    case generic(Error)
 
-    public static func == (lhs: ImageManagerError, rhs: ImageManagerError) -> Bool {
+    public static func == (lhs: ImageLoadError, rhs: ImageLoadError) -> Bool {
         return areEqual(lhs, rhs)
     }
 }
 
-extension ImageManagerError: LocalizedError {
+extension ImageLoadError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .loadError:

@@ -59,7 +59,7 @@ and two *__optional__* parameters:
 
 `contentMode: ContentMode` - provide image content mode. Default walue is `ContentMode.fit`.
 
-`placeholder: UIImage` - provide image placeholder you want to display if download failed. Default image placeholder is SFSymbol named *wifi.exclamationmark*  [![Imgur](https://imgur.com/hbK2bJb.png)](https://imgur.com/hbK2bJb.png)
+`placeholder: UIImage` - provide image placeholder you want to display if download failed. If no custom placeholder provided default will be used.
 
 Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/master/Example) project for further details.
 
@@ -80,7 +80,7 @@ Or just add package to your project:
 2. Paste the repository URL: https://github.com/achirkof/LoadableImage.git
 
 ### Future plans
-- [x] Make `ImageLoadable` Codable to be able use it as type in the model
 - [x] Make `ImageLoadable` possible to work also with images from `Assets` catalog 
+- [x] Use URL caching to reduce network traffic and increase image loading speed
+- [ ] Make `ImageLoadable` Codable to be able use it as type in the model
 - [ ] Rewrite from `dataTask` to `downloadTask` to decrease memory usage for big images
-- [ ] Make it possible to *optionally* set caching strategy 
