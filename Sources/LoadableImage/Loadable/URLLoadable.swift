@@ -48,22 +48,3 @@ public class URLLoadable: Loadable {
 
     public func cancel() {}
 }
-
-public protocol NetworkProvider {
-    typealias Output = URLSession.DataTaskPublisher.Output
-    func publisher(for url: URL, cachePolicy: URLRequest.CachePolicy) -> AnyPublisher<Output, URLError>
-}
-
-public class Network: NetworkProvider {
-    public init() {}
-
-    public func publisher(
-        for url: URL,
-        cachePolicy: URLRequest.CachePolicy = .reloadRevalidatingCacheData
-    ) -> AnyPublisher<Output, URLError> {
-        let request = URLRequest(url: url, cachePolicy: cachePolicy)
-        return URLSession.shared
-            .dataTaskPublisher(for: request)
-            .eraseToAnyPublisher()
-    }
-}
