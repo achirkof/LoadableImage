@@ -10,4 +10,8 @@ extension UIImage {
     func isEqualToImage(_ image: UIImage) -> Bool {
         return self.pngData() == image.pngData()
     }
+
+    public static func noImage() -> UIImage {
+        return UIImage(named: "noImage")!.withRenderingMode(.alwaysTemplate)
+    }
 }

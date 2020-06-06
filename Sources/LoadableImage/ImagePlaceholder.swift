@@ -19,9 +19,3 @@ public struct ImagePlaceholder: View {
         Image(uiImage: placeholder)
     }
 }
-
-extension UIImage {
-    public static func noImage() -> UIImage {
-         return UIImage(named: "noImage")!.withRenderingMode(.alwaysTemplate)
-    }
-}

@@ -18,17 +18,9 @@ class ImageManagerTests: XCTestCase {
 
     func test_init_whenLoadableIsNil_shouldSetStateFailed() {
         let sut = ImageManager(loadable: nil)
-        let expectation = XCTestExpectation(description: "async sink test")
-
-        let cancellable = sut.objectWillChange
-        .sink { _ in
-            expectation.fulfill()
-        }
 
         sut.loadImage()
 
-        wait(for: [expectation], timeout: 5.0)
-        XCTAssertNotNil(cancellable)
         XCTAssertEqual(sut.state, .failed(.notExists))
     }
 
@@ -38,9 +30,9 @@ class ImageManagerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "async sink test")
 
         let cancellable = sut.objectWillChange
-        .sink { _ in
-            expectation.fulfill()
-        }
+            .sink { _ in
+                expectation.fulfill()
+            }
 
         sut.loadImage()
 
@@ -77,27 +69,13 @@ class ImageManagerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "async sink test")
 
         let cancellable = sut.objectWillChange
-            .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .finished:
-                        XCTFail("Shouldn't receive '.finished' signal")
-                        break
-
-                    case let .failure(error):
-                        XCTFail("Shouldn't receive '.failure' signal, but get a error: \(error)")
-                        break
-                    }
-                },
-                receiveValue: { value in
-                    XCTAssertNotNil(value)
-                    expectation.fulfill()
-                }
-            )
+            .sink { _ in
+                expectation.fulfill()
+            }
 
         sut.loadImage()
+        
         wait(for: [expectation], timeout: 5.0)
-
         XCTAssertNotNil(cancellable)
         XCTAssertEqual(sut.state, .fetched(Stub.image))
     }
