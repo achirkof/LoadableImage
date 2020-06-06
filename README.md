@@ -59,7 +59,7 @@ and two *__optional__* parameters:
 
 `contentMode: ContentMode` - provide image content mode. Default walue is `ContentMode.fit`.
 
-`placeholder: UIImage` - provide image placeholder you want to display if download failed. Default image placeholder is SFSymbol named *wifi.exclamationmark*  [![Imgur](https://imgur.com/hbK2bJb.png)](https://imgur.com/hbK2bJb.png)
+`placeholder: UIImage` - provide image placeholder you want to display if download failed. If no custom placeholder provided default will be used.
 
 Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/master/Example) project for further details.
 
@@ -71,7 +71,7 @@ Once you have your Swift package set up, adding LoadableImage as a dependency is
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "0.1.0")
+    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "0.3.0")
 ]
 ```
 
