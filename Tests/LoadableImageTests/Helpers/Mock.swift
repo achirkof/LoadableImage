@@ -5,10 +5,13 @@
 //
 
 import Combine
-import Foundation
 import LoadableImage
+import UIKit
 
-enum Mock {
+enum Mock {}
+
+/// Mock Network provider
+extension Mock {
     class MockNetworkProvider: NetworkProvider {
         var data: Data
         var response: HTTPURLResponse
@@ -41,5 +44,28 @@ enum Mock {
                 headerFields: nil
             )!
         )
+    }
+}
+
+/// Mock Assets provider
+extension Mock {
+    class MockAssetsProvider: AssetsProvider {
+        var image: UIImage?
+
+        init(
+            image: UIImage?
+        ) {
+            self.image = image
+        }
+
+        func publisher(for image: UIImage) -> AnyPublisher<Output, Never> {
+            return Just(image)
+                .setFailureType(to: Never.self)
+                .eraseToAnyPublisher()
+        }
+    }
+
+    static func makeMockAssets(with image: UIImage? = nil) -> AssetsProvider {
+        return MockAssetsProvider(image: image)
     }
 }

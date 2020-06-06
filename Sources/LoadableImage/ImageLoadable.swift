@@ -20,7 +20,7 @@ public struct ImageLoadable: View {
         renderingMode: Image.TemplateRenderingMode = .original,
         placeholder: UIImage? = nil
     ) {
-        self.imageManager = ImageManager(loadable: image)
+        self.imageManager = ImageManager(loadable: UIImageLoadable(image: image))
         self.contentMode = contentMode
         self.renderingMode = renderingMode
         self.placeholder = placeholder
