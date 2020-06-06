@@ -45,6 +45,4 @@ public class URLLoadable: Loadable {
             }
             .eraseToAnyPublisher()
     }
-
-    public func cancel() {}
 }

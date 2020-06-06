@@ -9,5 +9,4 @@ import UIKit
 
 public protocol Loadable {
     func load() -> AnyPublisher<UIImage, ImageLoadError>
-    func cancel()
 }

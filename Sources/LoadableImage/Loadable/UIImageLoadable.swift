@@ -29,6 +29,4 @@ public class UIImageLoadable: Loadable {
             .setFailureType(to: ImageLoadError.self)
             .eraseToAnyPublisher()
     }
-
-    public func cancel() {}
 }
