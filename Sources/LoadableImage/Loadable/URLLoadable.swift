@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  URLLoadable.swift
 //  
 //
 //  Created by CHIRKOV Andrey on 24.05.2020.
@@ -7,10 +7,6 @@
 
 import Combine
 import UIKit
-
-public protocol Loadable {
-    func load() -> AnyPublisher<UIImage, Error>
-}
 
 extension URL: Loadable {
     public func load() -> AnyPublisher<UIImage, Error> {
