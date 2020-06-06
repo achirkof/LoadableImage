@@ -1,6 +1,5 @@
 //
 //  URLLoadable.swift
-//  
 //
 //  Created by CHIRKOV Andrey on 24.05.2020.
 //
@@ -8,26 +7,63 @@
 import Combine
 import UIKit
 
-extension URL: Loadable {
-    public func load() -> AnyPublisher<UIImage, Error> {
-        URLSession
-            .shared
-            .dataTaskPublisher(for: self)
-            .tryMap { data, _ in
+public class URLLoadable: Loadable {
+    private let url: URL?
+    private let network: NetworkProvider
+
+    public init(
+        url: URL?,
+        network: NetworkProvider = Network()
+    ) {
+        self.url = url
+        self.network = network
+    }
+
+    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+        guard let url = url else {
+            return Fail<UIImage, ImageLoadError>(error: ImageLoadError.notExists)
+                .eraseToAnyPublisher()
+        }
+
+        return network.publisher(for: url, cachePolicy: .reloadRevalidatingCacheData)
+            .tryMap { (data, response) in
+                guard
+                    let httpResponse = response as? HTTPURLResponse,
+                    httpResponse.statusCode == 200
+                else {
+                    throw ImageLoadError.loadError
+                }
+
                 guard let image = UIImage(data: data) else {
-                    throw ImageManagerError.brokenData
+                    throw ImageLoadError.loadError
                 }
 
                 return image
             }
+            .mapError { error -> ImageLoadError in
+                return ImageLoadError.loadError
+            }
             .eraseToAnyPublisher()
     }
+
+    public func cancel() {}
 }
 
-extension UIImage: Loadable {
-    public func load() -> AnyPublisher<UIImage, Error> {
-        return Just(self)
-            .setFailureType(to: Error.self)
+public protocol NetworkProvider {
+    typealias Output = URLSession.DataTaskPublisher.Output
+    func publisher(for url: URL, cachePolicy: URLRequest.CachePolicy) -> AnyPublisher<Output, URLError>
+}
+
+public class Network: NetworkProvider {
+    public init() {}
+
+    public func publisher(
+        for url: URL,
+        cachePolicy: URLRequest.CachePolicy = .reloadRevalidatingCacheData
+    ) -> AnyPublisher<Output, URLError> {
+        let request = URLRequest(url: url, cachePolicy: cachePolicy)
+        return URLSession.shared
+            .dataTaskPublisher(for: request)
             .eraseToAnyPublisher()
     }
 }

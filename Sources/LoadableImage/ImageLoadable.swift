@@ -1,6 +1,5 @@
 //
-//  Loadable.swift
-//  LoadableImage
+//  ImageLoadable.swift
 //
 //  Created by CHIRKOV Andrey on 12.01.2020.
 //
@@ -33,7 +32,7 @@ public struct ImageLoadable: View {
         renderingMode: Image.TemplateRenderingMode = .original,
         placeholder: UIImage? = nil
     ) {
-        self.imageManager = ImageManager(loadable: url)
+        self.imageManager = ImageManager(loadable: URLLoadable(url: url))
         self.contentMode = contentMode
         self.renderingMode = renderingMode
         self.placeholder = placeholder
@@ -62,21 +61,15 @@ public struct ImageLoadable: View {
                 ActivityIndicator(isAnimating: true)
             )
 
-        case let .fetched(result):
-            switch result {
-            case let .success(image):
-                return AnyView(
-                    Image(uiImage: image)
-                        .resizable()
-                        .renderingMode(renderingMode)
-                        .aspectRatio(contentMode: contentMode)
-                )
+        case let .fetched(image):
+            return AnyView(
+                Image(uiImage: image)
+                    .resizable()
+                    .renderingMode(renderingMode)
+                    .aspectRatio(contentMode: contentMode)
+            )
 
-            case .failure:
-                return placeholderView
-            }
-
-        case .failToLoad:
+        case .failed:
             return placeholderView
         }
     }
