@@ -1,6 +1,5 @@
 //
 //  ImagePlaceholder.swift
-//  LoadableImage
 //
 //  Created by CHIRKOV Andrey on 12.01.2020.
 //
