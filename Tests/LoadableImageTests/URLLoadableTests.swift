@@ -89,7 +89,7 @@ class URLLoadableTests: XCTestCase {
     func test_load_withBadResponse_shouldReturnError() {
         let url = URL(string: "https://robohash.org/loadablerobot")
         let data = "any data".data(using: .utf8)
-        let mockNetwork = makeMockNetwork(with: url!, data: data!, statusCode: 404)
+        let mockNetwork = Mock.makeMockNetwork(with: url!, data: data!, statusCode: 404)
         let sut = URLLoadable(url: url, network: mockNetwork)
         let expectation = XCTestExpectation(description: "Downloading from " + "\(url?.absoluteString ?? "URL")")
 
@@ -117,7 +117,7 @@ class URLLoadableTests: XCTestCase {
     func test_load_withBrokenData_shouldReturnError() {
         let url = URL(string: "https://robohash.org/loadablerobot")!
         let data = "not an image".data(using: .utf8)!
-        let mockNetwork = makeMockNetwork(with: url, data: data, statusCode: 200)
+        let mockNetwork = Mock.makeMockNetwork(with: url, data: data, statusCode: 200)
         let sut = URLLoadable(url: url, network: mockNetwork)
         let expectation = XCTestExpectation(description: "Downloading from " + "\(url.absoluteString)")
 
@@ -140,46 +140,5 @@ class URLLoadableTests: XCTestCase {
 
         XCTAssertNotNil(loadImagePublisher)
         wait(for: [expectation], timeout: 5.0)
-    }
-}
-
-extension URLLoadableTests {
-    // MARK: - Helpers
-    private func makeMockNetwork(with url: URL, data: Data, statusCode: Int) -> NetworkProvider {
-        return MockNetworkProvider(
-            data: data,
-            response: HTTPURLResponse(
-                url: url,
-                statusCode: statusCode,
-                httpVersion: "HTTP/1.1",
-                headerFields: nil
-            )!
-        )
-    }
-
-    private var imageStub: UIImage {
-        UIImage.make(withColor: .red)
-    }
-}
-
-private class MockNetworkProvider: NetworkProvider {
-    var data: Data
-    var response: HTTPURLResponse
-
-    init(
-        data: Data,
-        response: HTTPURLResponse
-    ) {
-        self.data = data
-        self.response = response
-    }
-
-    public func publisher(
-        for url: URL,
-        cachePolicy: URLRequest.CachePolicy = .reloadRevalidatingCacheData
-    ) -> AnyPublisher<Output, URLError> {
-        return Just((data: data, response: response))
-            .setFailureType(to: URLError.self)
-            .eraseToAnyPublisher()
     }
 }
