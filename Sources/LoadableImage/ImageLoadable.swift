@@ -6,6 +6,28 @@
 
 import SwiftUI
 
+
+/// Wrapper for the SwiftUI `Image` with loading indicator, caching and placeholder
+///
+/// Can be initialized with:
+/// - UIImage `ImageLoadable(image:)`:
+///
+///     ImageLoadable(
+///         image: UIImage(named: "robot"),
+///         contentMode: .fit
+///     )
+///
+/// - URL `ImageLoadable(url:)`:
+///
+///     ImageLoadable(
+///         url: URL(url: "https://robots.com/robot.png"),
+///         contentMode: .fit
+///     )
+///
+/// Optional parameters:
+/// - `optional` ContentMode(fit/fill). Default `fit`
+/// - `optional` TemplateRenderingMode(template/original). Default `original`
+/// - `optional` UIImage placeholder. Default placeholder provided
 @available(iOS 13.0, macOS 10.15, *)
 public struct ImageLoadable: View {
     @ObservedObject var imageManager: ImageManager
@@ -14,6 +36,12 @@ public struct ImageLoadable: View {
     private let renderingMode: Image.TemplateRenderingMode
     private let placeholder: UIImage?
 
+    /// Initialization with UIImage
+    /// - Parameters:
+    ///   - image: Image to put
+    ///   - contentMode: image `ContentMode` (fit/fill)
+    ///   - renderingMode: image `TemplateRenderingMode` (template/original)
+    ///   - placeholder: `optional` image placeholder to put in case of image with provided name not exists
     public init(
         image: UIImage?,
         contentMode: ContentMode = .fit,
@@ -26,6 +54,12 @@ public struct ImageLoadable: View {
         self.placeholder = placeholder
     }
 
+    /// Initialization with URL
+    /// - Parameters:
+    ///   - url: URL for the image
+    ///   - contentMode: image `ContentMode` (fit/fill)
+    ///   - renderingMode: image `TemplateRenderingMode` (template/original)
+    ///   - placeholder: `optional` image placeholder to put in case of download error
     public init(
         url: URL?,
         contentMode: ContentMode = .fit,
