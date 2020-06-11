@@ -44,16 +44,6 @@ struct ContentView: View {
 
 ```
 
-ImageLoadable has one *__required__* parameter:
-
-`imageURL: String` - provide a remote image URL;
-
-and two *__optional__* parameters:
-
-`contentMode: ContentMode` - provide image content mode. Default walue is `ContentMode.fit`.
-
-`placeholder: UIImage` - provide image placeholder you want to display if download failed. If no custom placeholder provided default will be used.
-
 Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/master/Example) project for further details.
 
 ### Installation
