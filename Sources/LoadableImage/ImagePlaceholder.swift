@@ -1,6 +1,5 @@
 //
 //  ImagePlaceholder.swift
-//  LoadableImage
 //
 //  Created by CHIRKOV Andrey on 12.01.2020.
 //
@@ -18,11 +17,5 @@ public struct ImagePlaceholder: View {
 
     public var body: some View {
         Image(uiImage: placeholder)
-    }
-}
-
-extension UIImage {
-    public static func noImage() -> UIImage {
-         return UIImage(named: "noImage")!.withRenderingMode(.alwaysTemplate)
     }
 }
