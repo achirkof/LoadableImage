@@ -5,9 +5,9 @@
         "package": "LoadableImage",
         "repositoryURL": "https://github.com/achirkof/LoadableImage.git",
         "state": {
-          "branch": null,
-          "revision": "283b9a0e39fa978dac93e8e8d1f8e4a629cb8ad4",
-          "version": "0.3.0"
+          "branch": "master",
+          "revision": "e0e6c661ca145350ae1d926e21251a577a0754a0",
+          "version": null
         }
       }
     ]

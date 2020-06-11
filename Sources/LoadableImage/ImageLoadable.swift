@@ -10,24 +10,27 @@ import SwiftUI
 /// Wrapper for the SwiftUI `Image` with loading indicator, caching and placeholder
 ///
 /// Can be initialized with:
-/// - UIImage `ImageLoadable(image:)`:
+///
+/// UIImage `ImageLoadable(image:)`:
 ///
 ///     ImageLoadable(
 ///         image: UIImage(named: "robot"),
 ///         contentMode: .fit
 ///     )
 ///
-/// - URL `ImageLoadable(url:)`:
+///
+/// URL `ImageLoadable(url:)`:
 ///
 ///     ImageLoadable(
 ///         url: URL(url: "https://robots.com/robot.png"),
 ///         contentMode: .fit
 ///     )
 ///
-/// Optional parameters:
-/// - `optional` ContentMode(fit/fill). Default `fit`
-/// - `optional` TemplateRenderingMode(template/original). Default `original`
-/// - `optional` UIImage placeholder. Default placeholder provided
+/// - Parameters:
+///   - contentMode: image content mode `fit` or `fill`. Default `fit`.
+///   - renderingMode: image template rendering mode `template` or `original`. Default `original`.
+///   - placeholder: image placeholder initialized with UIImage. Default placeholder provided.
+/// - Returns: A view with image
 @available(iOS 13.0, macOS 10.15, *)
 public struct ImageLoadable: View {
     @ObservedObject var imageManager: ImageManager
