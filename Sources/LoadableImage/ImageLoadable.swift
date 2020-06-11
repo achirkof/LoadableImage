@@ -9,9 +9,7 @@ import SwiftUI
 
 /// Wrapper for the SwiftUI `Image` with loading indicator, caching and placeholder
 ///
-/// Can be initialized with:
-///
-/// UIImage `ImageLoadable(image:)`:
+/// Initialization with UIImage `ImageLoadable(image:)`:
 ///
 ///     ImageLoadable(
 ///         image: UIImage(named: "robot"),
@@ -19,18 +17,14 @@ import SwiftUI
 ///     )
 ///
 ///
-/// URL `ImageLoadable(url:)`:
+/// Initialization with URL `ImageLoadable(url:)`:
 ///
 ///     ImageLoadable(
 ///         url: URL(url: "https://robots.com/robot.png"),
 ///         contentMode: .fit
 ///     )
 ///
-/// - Parameters:
-///   - contentMode: image content mode `fit` or `fill`. Default `fit`.
-///   - renderingMode: image template rendering mode `template` or `original`. Default `original`.
-///   - placeholder: image placeholder initialized with UIImage. Default placeholder provided.
-/// - Returns: A view with image
+///
 @available(iOS 13.0, macOS 10.15, *)
 public struct ImageLoadable: View {
     @ObservedObject var imageManager: ImageManager
@@ -42,9 +36,9 @@ public struct ImageLoadable: View {
     /// Initialization with UIImage
     /// - Parameters:
     ///   - image: Image to put
-    ///   - contentMode: image `ContentMode` (fit/fill)
-    ///   - renderingMode: image `TemplateRenderingMode` (template/original)
-    ///   - placeholder: `optional` image placeholder to put in case of image with provided name not exists
+    ///   - contentMode: `optional` image content mode `fit` or `fill`. Default `fit`.
+    ///   - renderingMode: `optional` image template rendering mode `template` or `original`. Default `original`.
+    ///   - placeholder: `optional` image placeholder initialized with UIImage. Default placeholder provided.
     public init(
         image: UIImage?,
         contentMode: ContentMode = .fit,
@@ -60,9 +54,9 @@ public struct ImageLoadable: View {
     /// Initialization with URL
     /// - Parameters:
     ///   - url: URL for the image
-    ///   - contentMode: image `ContentMode` (fit/fill)
-    ///   - renderingMode: image `TemplateRenderingMode` (template/original)
-    ///   - placeholder: `optional` image placeholder to put in case of download error
+    ///   - contentMode: `optional` image content mode `fit` or `fill`. Default `fit`.
+    ///   - renderingMode: `optional` image template rendering mode `template` or `original`. Default `original`.
+    ///   - placeholder: `optional` image placeholder initialized with UIImage. Default placeholder provided.
     public init(
         url: URL?,
         contentMode: ContentMode = .fit,
