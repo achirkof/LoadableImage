@@ -10,15 +10,12 @@ import LoadableImage
 import SwiftUI
 
 struct ContentView: View {
-    private let imageURL = "https://robohash.org/loadablerobot"
-    private let brokenImageURL = "https://broken.url"
-
     var body: some View {
         VStack {
             HStack {
                 VStack {
                     ImageLoadable(
-                        url: URL(string: imageURL),
+                        url: URL(string: "https://robohash.org/loadablerobot"),
                         contentMode: .fit
                     )
                     .frame(width: 140, height: 140)
@@ -32,7 +29,7 @@ struct ContentView: View {
 
                 VStack {
                     ImageLoadable(
-                        url: URL(string: brokenImageURL),
+                        url: URL(string: "https://broken.url"),
                         contentMode: .fit,
                         placeholder: UIImage(named: "noImage")
                     )
