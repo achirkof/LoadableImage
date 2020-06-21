@@ -10,4 +10,8 @@ enum Stub {
     static var image: UIImage {
         UIImage.make(withColor: .red)
     }
+
+    static var image2: UIImage {
+        UIImage.make(withColor: .yellow)
+    }
 }

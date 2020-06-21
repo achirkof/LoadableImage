@@ -59,4 +59,18 @@ class UIImageLoadableTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(loadImagePublisher)
     }
+
+    func test_equatable_equalShouldReturnTrue() {
+        let loadable1 = UIImageLoadable(image: Stub.image)
+        let loadable2 = UIImageLoadable(image: Stub.image)
+
+        XCTAssertEqual(loadable1, loadable2)
+    }
+
+    func test_equatable_differentShouldReturnFalse() {
+        let loadable1 = UIImageLoadable(image: Stub.image)
+        let loadable2 = UIImageLoadable(image: Stub.image2)
+
+        XCTAssertNotEqual(loadable1, loadable2)
+    }
 }

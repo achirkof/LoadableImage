@@ -141,4 +141,18 @@ class URLLoadableTests: XCTestCase {
         XCTAssertNotNil(loadImagePublisher)
         wait(for: [expectation], timeout: 5.0)
     }
+
+    func test_equatable_equalShouldReturnTrue() {
+        let loadable1 = URLLoadable(url: URL(string: "https://robohash.org/loadablerobot"))
+        let loadable2 = URLLoadable(url: URL(string: "https://robohash.org/loadablerobot"))
+
+        XCTAssertEqual(loadable1, loadable2)
+    }
+
+    func test_equatable_differentShouldReturnFalse() {
+        let loadable1 = URLLoadable(url: URL(string: "https://robohash.org/loadablerobot1"))
+        let loadable2 = URLLoadable(url: URL(string: "https://robohash.org/loadablerobot2"))
+
+        XCTAssertNotEqual(loadable1, loadable2)
+    }
 }

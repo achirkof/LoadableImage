@@ -30,3 +30,15 @@ public class UIImageLoadable: Loadable {
             .eraseToAnyPublisher()
     }
 }
+
+extension UIImageLoadable: Equatable {
+    public static func == (lhs: UIImageLoadable, rhs: UIImageLoadable) -> Bool {
+        return lhs.image?.pngData() == rhs.image?.pngData()
+    }
+}
+
+extension UIImageLoadable {
+    func any() -> AnyImageLoadable {
+        return AnyImageLoadable(self)
+    }
+}
