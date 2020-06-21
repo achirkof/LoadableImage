@@ -156,7 +156,7 @@ class URLLoadableTests: XCTestCase {
         XCTAssertNotEqual(loadable1, loadable2)
     }
 
-    func test_decodable_withURL_shouldDecodeSuccessful() {
+    func test_decodable_withURLImage_shouldDecodeSuccessful() {
         let expected = RobotURLImage(
             name: "Robot-1",
             image: URL(string: "https://robohash.org/loadablerobot")?.eraseToAnyLoadable()

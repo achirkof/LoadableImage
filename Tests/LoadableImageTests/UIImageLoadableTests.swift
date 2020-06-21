@@ -10,7 +10,7 @@ import XCTest
 class UIImageLoadableTests: XCTestCase {
     func test_load_withImageInAssets_shouldReturnImage() {
         let assetsMock = Mock.makeMockAssets(with: Stub.image)
-        let sut = UIImageLoadable(image: Stub.image, assets: assetsMock)
+        let sut = UIImageLoadable(name: "", assets: assetsMock)
         let expectation = XCTestExpectation(description: "Loading image from assets catalog")
 
         let loadImagePublisher = sut.load()
@@ -36,7 +36,7 @@ class UIImageLoadableTests: XCTestCase {
 
     func test_load_withNoImageInAssets_shouldReturnError() {
         let assetsMock = Mock.makeMockAssets(with: nil)
-        let sut = UIImageLoadable(image: nil, assets: assetsMock)
+        let sut = UIImageLoadable(name: "", assets: assetsMock)
         let expectation = XCTestExpectation(description: "Loading image from assets catalog")
 
         let loadImagePublisher = sut.load()
@@ -61,16 +61,34 @@ class UIImageLoadableTests: XCTestCase {
     }
 
     func test_equatable_equalShouldReturnTrue() {
-        let loadable1 = UIImageLoadable(image: Stub.image)
-        let loadable2 = UIImageLoadable(image: Stub.image)
+        let loadable1 = UIImageLoadable(name: "image")
+        let loadable2 = UIImageLoadable(name: "image")
 
         XCTAssertEqual(loadable1, loadable2)
     }
 
     func test_equatable_differentShouldReturnFalse() {
-        let loadable1 = UIImageLoadable(image: Stub.imageRed)
-        let loadable2 = UIImageLoadable(image: Stub.imageYellow)
+        let loadable1 = UIImageLoadable(name: "imageOne")
+        let loadable2 = UIImageLoadable(name: "imageTwo")
 
         XCTAssertNotEqual(loadable1, loadable2)
+    }
+
+    func test_decodable_withAssetsImage_shouldDecodeSuccessful() {
+        let expected = RobotAssetsImage(
+            name: "Robot-1",
+            image: "robot4H1".eraseToAnyLoadable()
+        )
+
+        let decoded = try! JSONDecoder().decode(RobotAssetsImage.self, from: Stub.robotWithAssetsImage.data(using: .utf8)!)
+
+        XCTAssertEqual(decoded, expected)
+    }
+}
+
+extension UIImageLoadableTests {
+    struct RobotAssetsImage: Equatable, Decodable {
+        var name: String
+        var image: AnyImageLoadable<String>?
     }
 }

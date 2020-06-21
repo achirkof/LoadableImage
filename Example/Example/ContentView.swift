@@ -45,7 +45,7 @@ struct ContentView: View {
 
             VStack {
                 ImageLoadable(
-                    loadable: UIImage(named: "robot4H1"),
+                    loadable: "robot4H1",
                     contentMode: .fit
                 )
                 .frame(width: 140, height: 140)

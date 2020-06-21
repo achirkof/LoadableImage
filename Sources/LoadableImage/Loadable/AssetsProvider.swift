@@ -9,15 +9,20 @@ import UIKit
 
 public protocol AssetsProvider {
     typealias Output = Just<UIImage>.Output
-    func publisher(for image: UIImage) -> AnyPublisher<Output, Never>
+    func publisher(for name: String) -> AnyPublisher<Output, ImageLoadError>
 }
 
 public class Assets: AssetsProvider {
     public init() {}
 
-    public func publisher(for image: UIImage) -> AnyPublisher<Output, Never> {
+    public func publisher(for name: String) -> AnyPublisher<Output, ImageLoadError> {
+        guard let image = UIImage(named: name) else {
+            return Fail<UIImage, ImageLoadError>(error: .notExists)
+                .eraseToAnyPublisher()
+        }
+
         return Just(image)
-            .setFailureType(to: Never.self)
+            .setFailureType(to: ImageLoadError.self)
             .eraseToAnyPublisher()
     }
 }
