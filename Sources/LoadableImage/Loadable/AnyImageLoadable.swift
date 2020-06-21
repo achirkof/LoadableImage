@@ -7,7 +7,7 @@
 import Combine
 import UIKit
 
-struct AnyImageLoadable: Loadable, Equatable {
+public struct AnyImageLoadable<DecodableLoadable: Decodable & Loadable>: Loadable, Equatable, Decodable {
     private let loadable: Loadable
 
     init(
@@ -16,11 +16,16 @@ struct AnyImageLoadable: Loadable, Equatable {
         self.loadable = loadable
     }
 
-    func load() -> AnyPublisher<UIImage, ImageLoadError> {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        loadable = try container.decode(DecodableLoadable.self)
+    }
+
+    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
         return loadable.load()
     }
 
-    static func == (lhs: AnyImageLoadable, rhs: AnyImageLoadable) -> Bool {
+    public static func == (lhs: AnyImageLoadable, rhs: AnyImageLoadable) -> Bool {
         return lhs.loadable.equals(rhs.loadable)
     }
 }

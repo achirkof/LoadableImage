@@ -7,7 +7,7 @@
 import Combine
 import UIKit
 
-public class UIImageLoadable: Loadable {
+public final class UIImageLoadable: Loadable {
     private let image: UIImage?
     private let assets: AssetsProvider
 
@@ -37,8 +37,9 @@ extension UIImageLoadable: Equatable {
     }
 }
 
-extension UIImageLoadable {
-    func any() -> AnyImageLoadable {
-        return AnyImageLoadable(self)
+extension UIImage: Loadable {
+    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+        let loadable = UIImageLoadable(image: self)
+        return loadable.load()
     }
 }

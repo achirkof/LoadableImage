@@ -68,8 +68,8 @@ class UIImageLoadableTests: XCTestCase {
     }
 
     func test_equatable_differentShouldReturnFalse() {
-        let loadable1 = UIImageLoadable(image: Stub.image)
-        let loadable2 = UIImageLoadable(image: Stub.image2)
+        let loadable1 = UIImageLoadable(image: Stub.imageRed)
+        let loadable2 = UIImageLoadable(image: Stub.imageYellow)
 
         XCTAssertNotEqual(loadable1, loadable2)
     }

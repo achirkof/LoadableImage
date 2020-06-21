@@ -33,37 +33,19 @@ public struct ImageLoadable: View {
     private let renderingMode: Image.TemplateRenderingMode
     private let placeholder: UIImage?
 
-    /// Initialization with UIImage
+    /// Initialization with Loadable
     /// - Parameters:
     ///   - image: Image to put
     ///   - contentMode: `optional` image content mode `fit` or `fill`. Default `fit`.
     ///   - renderingMode: `optional` image template rendering mode `template` or `original`. Default `original`.
     ///   - placeholder: `optional` image placeholder initialized with UIImage. Default placeholder provided.
     public init(
-        image: UIImage?,
+        loadable: Loadable?,
         contentMode: ContentMode = .fit,
         renderingMode: Image.TemplateRenderingMode = .original,
         placeholder: UIImage? = nil
     ) {
-        self.imageManager = ImageManager(loadable: UIImageLoadable(image: image))
-        self.contentMode = contentMode
-        self.renderingMode = renderingMode
-        self.placeholder = placeholder
-    }
-
-    /// Initialization with URL
-    /// - Parameters:
-    ///   - url: URL for the image
-    ///   - contentMode: `optional` image content mode `fit` or `fill`. Default `fit`.
-    ///   - renderingMode: `optional` image template rendering mode `template` or `original`. Default `original`.
-    ///   - placeholder: `optional` image placeholder initialized with UIImage. Default placeholder provided.
-    public init(
-        url: URL?,
-        contentMode: ContentMode = .fit,
-        renderingMode: Image.TemplateRenderingMode = .original,
-        placeholder: UIImage? = nil
-    ) {
-        self.imageManager = ImageManager(loadable: URLLoadable(url: url))
+        self.imageManager = ImageManager(loadable: loadable)
         self.contentMode = contentMode
         self.renderingMode = renderingMode
         self.placeholder = placeholder

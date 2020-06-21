@@ -53,8 +53,9 @@ extension URLLoadable: Equatable {
     }
 }
 
-extension URLLoadable {
-    func any() -> AnyImageLoadable {
-        return AnyImageLoadable(self)
+extension URL: Loadable {
+    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+        let loadable = URLLoadable(url: self)
+        return loadable.load()
     }
 }
