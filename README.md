@@ -1,12 +1,12 @@
+<h1>
+    <img align="left" width="50" src="../assets/LoadableImage-icon.png" alt="LoadableImage Header Logo"/> LoadableImage
+</h1>
+
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/achirkof/LoadableImage?include_prereleases)
 [![Build Status](https://travis-ci.com/achirkof/LoadableImage.svg?branch=master)](https://travis-ci.com/achirkof/LoadableImage)
 [![codecov](https://codecov.io/gh/achirkof/LoadableImage/branch/master/graph/badge.svg)](https://codecov.io/gh/achirkof/LoadableImage)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-# LoadableImage
-
-This is a lightweight package provided easy and powerful way to show remote image in SwiftUI interface.
 
 [![Imgur](https://imgur.com/iN7zYlQ.gif)](https://imgur.com/iN7zYlQ.gif)
 
@@ -44,7 +44,7 @@ struct ContentView: View {
 
 ```
 
-Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/master/Example) project for further details.
+Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/example) project for further details.
 
 ### Installation
 
