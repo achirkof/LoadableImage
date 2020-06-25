@@ -46,7 +46,7 @@ struct ContentView: View {
 
 You can also use loadable image as a property in your model and it Decodes from JSON. For example
 
-```
+```swift
 struct Robot: Decodable {
     var name: String
     var localImage: AnyImageLoadable<String>? // for image from assets
@@ -54,9 +54,9 @@ struct Robot: Decodable {
 }
 ```
 
-It's also possible and very convenient while unit testing or using Xcode preview to create mock objects with image. For example:
+It's also possible and very convenient while unit testing or using [Xcode preview](https://developer.apple.com/videos/play/wwdc2019/233/) to create mock objects with image. For example:
 
-```
+```swift
 let robot: Robot = Robot(
     name: "Bender",
     image: URL(string: "https://robohash.org/loadablerobot")?.eraseToAnyLoadable()
@@ -73,7 +73,7 @@ Once you have your Swift package set up, adding LoadableImage as a dependency is
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "0.3.0")
+    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "0.5.0")
 ]
 ```
 
