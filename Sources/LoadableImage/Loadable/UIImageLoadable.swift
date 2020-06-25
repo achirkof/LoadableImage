@@ -7,26 +7,33 @@
 import Combine
 import UIKit
 
-public class UIImageLoadable: Loadable {
-    private let image: UIImage?
+public final class UIImageLoadable: Loadable {
+    private let name: String
     private let assets: AssetsProvider
 
     public init(
-        image: UIImage?,
+        name: String,
         assets: AssetsProvider = Assets()
     ) {
-        self.image = image
+        self.name = name
         self.assets = assets
     }
 
     public func load() -> AnyPublisher<UIImage, ImageLoadError> {
-        guard let image = image else {
-            return Fail<UIImage, ImageLoadError>(error: .notExists)
-                .eraseToAnyPublisher()
-        }
-
-        return assets.publisher(for: image)
-            .setFailureType(to: ImageLoadError.self)
+        return assets.publisher(for: name)
             .eraseToAnyPublisher()
+    }
+}
+
+extension UIImageLoadable: Equatable {
+    public static func == (lhs: UIImageLoadable, rhs: UIImageLoadable) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
+
+extension String: Loadable {
+    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+        let loadable = UIImageLoadable(name: self)
+        return loadable.load()
     }
 }

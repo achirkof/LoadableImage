@@ -46,3 +46,16 @@ public class URLLoadable: Loadable {
             .eraseToAnyPublisher()
     }
 }
+
+extension URLLoadable: Equatable {
+    public static func == (lhs: URLLoadable, rhs: URLLoadable) -> Bool {
+        return lhs.url == rhs.url
+    }
+}
+
+extension URL: Loadable {
+    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+        let loadable = URLLoadable(url: self)
+        return loadable.load()
+    }
+}

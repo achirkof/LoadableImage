@@ -36,7 +36,9 @@ class URLLoadableTests: XCTestCase {
 
     func test_load_withCorrectURL_shouldReturnImage() {
         let url = URL(string: "https://robohash.org/loadablerobot")
-        let sut = URLLoadable(url: url)
+        let data = Stub.image.pngData()
+        let mockNetwork = Mock.makeMockNetwork(with: url!, data: data!, statusCode: 200)
+        let sut = URLLoadable(url: url, network: mockNetwork)
         let expectation = XCTestExpectation(description: "Downloading from " + "\(url?.absoluteString ?? "URL")")
 
         let loadImagePublisher = sut.load()
@@ -140,5 +142,37 @@ class URLLoadableTests: XCTestCase {
 
         XCTAssertNotNil(loadImagePublisher)
         wait(for: [expectation], timeout: 5.0)
+    }
+
+    func test_equatable_equalShouldReturnTrue() {
+        let loadable1 = URL(string: "https://robohash.org/loadablerobot")
+        let loadable2 = URL(string: "https://robohash.org/loadablerobot")
+
+        XCTAssertEqual(loadable1, loadable2)
+    }
+
+    func test_equatable_differentShouldReturnFalse() {
+        let loadable1 = URL(string: "https://robohash.org/loadablerobot1")
+        let loadable2 = URL(string: "https://robohash.org/loadablerobot2")
+
+        XCTAssertNotEqual(loadable1, loadable2)
+    }
+
+    func test_decodable_withURLImage_shouldDecodeSuccessful() {
+        let expected = RobotURLImage(
+            name: "Robot-1",
+            image: URL(string: "https://robohash.org/loadablerobot")?.eraseToAnyLoadable()
+        )
+
+        let decoded = try! JSONDecoder().decode(RobotURLImage.self, from: Stub.robotWithURLImage.data(using: .utf8)!)
+
+        XCTAssertEqual(decoded, expected)
+    }
+}
+
+extension URLLoadableTests {
+    struct RobotURLImage: Equatable, Decodable {
+        var name: String
+        var image: AnyImageLoadable<URL>?
     }
 }

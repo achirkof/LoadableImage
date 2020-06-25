@@ -65,5 +65,5 @@ Or just add package to your project:
 ### Future plans
 - [x] Make `ImageLoadable` possible to work also with images from `Assets` catalog 
 - [x] Use URL caching to reduce network traffic and increase image loading speed
-- [ ] Make `ImageLoadable` Codable to be able use it as type in the model
+- [x] Make `ImageLoadable` Decodable to be able use it as type in the model
 - [ ] Rewrite from `dataTask` to `downloadTask` to decrease memory usage for big images

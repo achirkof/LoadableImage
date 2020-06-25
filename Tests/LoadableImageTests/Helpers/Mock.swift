@@ -58,9 +58,14 @@ extension Mock {
             self.image = image
         }
 
-        func publisher(for image: UIImage) -> AnyPublisher<Output, Never> {
+        func publisher(for name: String) -> AnyPublisher<Output, ImageLoadError> {
+            guard let image = image else {
+                return Fail<Output, ImageLoadError>(error: .notExists)
+                    .eraseToAnyPublisher()
+            }
+
             return Just(image)
-                .setFailureType(to: Never.self)
+                .setFailureType(to: ImageLoadError.self)
                 .eraseToAnyPublisher()
         }
     }
