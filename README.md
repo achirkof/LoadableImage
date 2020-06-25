@@ -9,8 +9,6 @@
     <h1>LoadableImage</h1>
 </p>
 
-This is a lightweight package provided easy and powerful way to show remote image in SwiftUI interface.
-
 [![Imgur](https://imgur.com/iN7zYlQ.gif)](https://imgur.com/iN7zYlQ.gif)
 
 ### How to use
