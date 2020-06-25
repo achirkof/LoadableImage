@@ -7,7 +7,7 @@
 import Combine
 import UIKit
 
-public struct AnyImageLoadable<T: Codable & Loadable>: Loadable, Equatable, Codable {
+public struct AnyImageLoadable<T: Decodable & Loadable>: Loadable, Equatable, Decodable {
     private let loadable: Loadable
 
     init(
@@ -19,11 +19,6 @@ public struct AnyImageLoadable<T: Codable & Loadable>: Loadable, Equatable, Coda
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         loadable = try container.decode(T.self)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(T.self)
     }
 
     public func load() -> AnyPublisher<UIImage, ImageLoadError> {
