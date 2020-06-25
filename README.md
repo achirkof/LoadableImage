@@ -22,7 +22,7 @@ struct ContentView: View {
     var body: some View {
         HStack {
             ImageLoadable(
-                url: "https://robohash.org/loadablerobot",
+                loadable: URL(string: "https://robohash.org/loadablerobot"),
                 contentMode: .fit
             )
             .frame(width: 140, height: 140)
@@ -31,7 +31,7 @@ struct ContentView: View {
             .shadow(radius: 10)
 
             ImageLoadable(
-                image: UIImage(named: "image_from_assets")
+                loadable: "image_from_assets"
             )
             .frame(width: 140, height: 140)
             .background(Color.white)
@@ -42,6 +42,25 @@ struct ContentView: View {
     }
 }
 
+```
+
+You can also use loadable image as a property in your model and it Decodes from JSON. For example
+
+```
+struct Robot: Decodable {
+    var name: String
+    var localImage: AnyImageLoadable<String>? // for image from assets
+    var remoteImage: AnyImageLoadable<URL>? // for image from network
+}
+```
+
+It's also possible and very convenient while unit testing or using Xcode preview to create mock objects with image. For example:
+
+```
+let robot: Robot = Robot(
+    name: "Bender",
+    image: URL(string: "https://robohash.org/loadablerobot")?.eraseToAnyLoadable()
+)
 ```
 
 Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/example) project for further details.
