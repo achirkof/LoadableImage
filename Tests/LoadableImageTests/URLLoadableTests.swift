@@ -36,7 +36,9 @@ class URLLoadableTests: XCTestCase {
 
     func test_load_withCorrectURL_shouldReturnImage() {
         let url = URL(string: "https://robohash.org/loadablerobot")
-        let sut = URLLoadable(url: url)
+        let data = Stub.image.pngData()
+        let mockNetwork = Mock.makeMockNetwork(with: url!, data: data!, statusCode: 200)
+        let sut = URLLoadable(url: url, network: mockNetwork)
         let expectation = XCTestExpectation(description: "Downloading from " + "\(url?.absoluteString ?? "URL")")
 
         let loadImagePublisher = sut.load()
