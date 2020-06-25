@@ -3,4 +3,5 @@ coverage:
   round: down
   range: "70...100"
   ignore:
+    - LoadableImage/Helpers
     - Tests
