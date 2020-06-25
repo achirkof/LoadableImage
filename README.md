@@ -4,7 +4,10 @@
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-# LoadableImage
+<p>
+    <img align="left" width="75" src="../assets/LoadableImage-icon.png" alt="LoadableImage Header Logo"/>
+    <h1>LoadableImage</h1>
+</p>
 
 This is a lightweight package provided easy and powerful way to show remote image in SwiftUI interface.
 
