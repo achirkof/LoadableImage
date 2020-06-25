@@ -1,7 +1,6 @@
-<p>
-    <img align="left" width="50" src="../assets/LoadableImage-icon.png" alt="LoadableImage Header Logo"/>
-    <h1>LoadableImage</h1>
-</p>
+<h1>
+    <img align="left" width="50" src="../assets/LoadableImage-icon.png" alt="LoadableImage Header Logo"/> LoadableImage
+</h1>
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/achirkof/LoadableImage?include_prereleases)
 [![Build Status](https://travis-ci.com/achirkof/LoadableImage.svg?branch=master)](https://travis-ci.com/achirkof/LoadableImage)
