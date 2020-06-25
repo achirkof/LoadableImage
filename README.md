@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 <p>
-    <img align="left" width="75" src="../assets/LoadableImage-icon.png" alt="LoadableImage Header Logo"/>
+    <img align="left" width="50" src="../assets/LoadableImage-icon.png" alt="LoadableImage Header Logo"/>
     <h1>LoadableImage</h1>
 </p>
 
