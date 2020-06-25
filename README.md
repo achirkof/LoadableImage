@@ -44,7 +44,7 @@ struct ContentView: View {
 
 ```
 
-Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/master/Example) project for further details.
+Consider [__Example__](https://github.com/achirkof/LoadableImage/tree/example) project for further details.
 
 ### Installation
 
