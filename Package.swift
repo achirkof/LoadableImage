@@ -1,4 +1,5 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
+
 import PackageDescription
 
 let package = Package(
@@ -7,12 +8,12 @@ let package = Package(
         SupportedPlatform.iOS(SupportedPlatform.IOSVersion.v13)
     ],
     products: [
-        Product.library(name: "LoadableImage", targets: ["LoadableImage"])
+        .library(name: "LoadableImage", targets: ["LoadableImage"])
     ],
     dependencies: [],
     targets: [
-        Target.target(name: "LoadableImage", dependencies: [], exclude: ["Example"]),
-        Target.testTarget(name: "LoadableImageTests", dependencies: ["LoadableImage"])
+        .target(name: "LoadableImage", dependencies: []),
+        .testTarget(name: "LoadableImageTests", dependencies: ["LoadableImage"])
     ],
     swiftLanguageVersions: [SwiftVersion.v5]
 )
