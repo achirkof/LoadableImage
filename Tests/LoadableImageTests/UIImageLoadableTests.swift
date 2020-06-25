@@ -87,7 +87,7 @@ class UIImageLoadableTests: XCTestCase {
 }
 
 extension UIImageLoadableTests {
-    struct RobotAssetsImage: Equatable, Decodable {
+    struct RobotAssetsImage: Equatable, Codable {
         var name: String
         var image: AnyImageLoadable<String>?
     }

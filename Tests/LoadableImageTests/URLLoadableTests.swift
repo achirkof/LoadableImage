@@ -171,7 +171,7 @@ class URLLoadableTests: XCTestCase {
 }
 
 extension URLLoadableTests {
-    struct RobotURLImage: Equatable, Decodable {
+    struct RobotURLImage: Equatable, Codable {
         var name: String
         var image: AnyImageLoadable<URL>?
     }
