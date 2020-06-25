@@ -73,7 +73,7 @@ Once you have your Swift package set up, adding LoadableImage as a dependency is
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "0.5.0")
+    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "1.0.0-beta.1")
 ]
 ```
 
