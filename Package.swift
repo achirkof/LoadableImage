@@ -1,11 +1,11 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
     name: "LoadableImage",
     platforms: [
-        .iOS(SupportedPlatform.IOSVersion.v13)
+        .iOS(.v13)
     ],
     products: [
         .library(
@@ -13,17 +13,22 @@ let package = Package(
             targets: ["LoadableImage"]
         )
     ],
-    dependencies: [],
     targets: [
         .target(
             name: "LoadableImage",
-            dependencies: [],
-            exclude: ["Example"]
+            exclude: [
+                "Example",
+                "Resources/noImage.svg"
+            ],
+            resources: [
+                .process("Resources/noImage.png")
+//                .process("Resources/noImage.svg")
+            ]
         ),
         .testTarget(
             name: "LoadableImageTests",
             dependencies: ["LoadableImage"]
         )
     ],
-    swiftLanguageVersions: [SwiftVersion.v5]
+    swiftLanguageVersions: [.v5]
 )

@@ -5,9 +5,9 @@
         "package": "LoadableImage",
         "repositoryURL": "https://github.com/achirkof/LoadableImage.git",
         "state": {
-          "branch": null,
-          "revision": "b8f0e9520b133428b6ad2d14313111c3a613a026",
-          "version": "1.0.0-beta.1"
+          "branch": "feature/make-loadable-string",
+          "revision": "7775cce168208b852458d1d0bc41c9a458928b54",
+          "version": null
         }
       }
     ]
