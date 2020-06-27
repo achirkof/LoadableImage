@@ -5,15 +5,25 @@ import PackageDescription
 let package = Package(
     name: "LoadableImage",
     platforms: [
-        SupportedPlatform.iOS(SupportedPlatform.IOSVersion.v13)
+        .iOS(SupportedPlatform.IOSVersion.v13)
     ],
     products: [
-        .library(name: "LoadableImage", targets: ["LoadableImage"])
+        .library(
+            name: "LoadableImage",
+            targets: ["LoadableImage"]
+        )
     ],
     dependencies: [],
     targets: [
-        .target(name: "LoadableImage", dependencies: []),
-        .testTarget(name: "LoadableImageTests", dependencies: ["LoadableImage"])
+        .target(
+            name: "LoadableImage",
+            dependencies: [],
+            exclude: ["Example"]
+        ),
+        .testTarget(
+            name: "LoadableImageTests",
+            dependencies: ["LoadableImage"]
+        )
     ],
     swiftLanguageVersions: [SwiftVersion.v5]
 )
