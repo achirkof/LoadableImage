@@ -7,7 +7,7 @@
 import Combine
 import UIKit
 
-public final class UIImageLoadable: Loadable {
+public final class UIImageLoadable: PublisherProvider {
     private let name: String
     private let assets: AssetsProvider
 
@@ -19,7 +19,12 @@ public final class UIImageLoadable: Loadable {
         self.assets = assets
     }
 
-    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+//    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+//        return assets.publisher(for: name)
+//            .eraseToAnyPublisher()
+//    }
+
+    public var publisher: AnyPublisher<UIImage, ImageLoadError> {
         return assets.publisher(for: name)
             .eraseToAnyPublisher()
     }
@@ -31,9 +36,12 @@ extension UIImageLoadable: Equatable {
     }
 }
 
-extension String: Loadable {
-    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
-        let loadable = UIImageLoadable(name: self)
-        return loadable.load()
-    }
+//extension String: Loadable {
+//    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+//        return UIImageLoadable(name: self).publisher
+//    }
+//}
+
+protocol PublisherProvider {
+    var publisher: AnyPublisher<UIImage, ImageLoadError> { get }
 }

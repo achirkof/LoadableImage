@@ -7,7 +7,7 @@
 import Combine
 import UIKit
 
-public class URLLoadable: Loadable {
+public class URLLoadable: PublisherProvider {
     private let url: URL?
     private let network: NetworkProvider
 
@@ -19,7 +19,34 @@ public class URLLoadable: Loadable {
         self.network = network
     }
 
-    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+//    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+//        guard let url = url else {
+//            return Fail<UIImage, ImageLoadError>(error: ImageLoadError.notExists)
+//                .eraseToAnyPublisher()
+//        }
+//
+//        return network.publisher(for: url, cachePolicy: .reloadRevalidatingCacheData)
+//            .tryMap { (data, response) in
+//                guard
+//                    let httpResponse = response as? HTTPURLResponse,
+//                    httpResponse.statusCode == 200
+//                else {
+//                    throw ImageLoadError.loadError
+//                }
+//
+//                guard let image = UIImage(data: data) else {
+//                    throw ImageLoadError.loadError
+//                }
+//
+//                return image
+//            }
+//            .mapError { error -> ImageLoadError in
+//                return ImageLoadError.loadError
+//            }
+//            .eraseToAnyPublisher()
+//    }
+
+    public var publisher: AnyPublisher<UIImage, ImageLoadError> {
         guard let url = url else {
             return Fail<UIImage, ImageLoadError>(error: ImageLoadError.notExists)
                 .eraseToAnyPublisher()
@@ -53,9 +80,8 @@ extension URLLoadable: Equatable {
     }
 }
 
-extension URL: Loadable {
-    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
-        let loadable = URLLoadable(url: self)
-        return loadable.load()
-    }
-}
+//extension URL: Loadable {
+//    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+//        return URLLoadable(url: self).publisher
+//    }
+//}

@@ -1,4 +1,4 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -18,7 +18,8 @@ let package = Package(
         .target(
             name: "LoadableImage",
             dependencies: [],
-            exclude: ["Example"]
+            exclude: ["Example"],
+            resources: [ .process("Resources/noImage.svg")]
         ),
         .testTarget(
             name: "LoadableImageTests",

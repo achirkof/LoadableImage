@@ -15,7 +15,7 @@ struct ContentView: View {
             HStack {
                 VStack {
                     ImageLoadable(
-                        loadable: URL(string: "https://robohash.org/loadablerobot"),
+                        source: "https://robohash.org/loadablerobot",
                         contentMode: .fit
                     )
                     .frame(width: 140, height: 140)
@@ -29,9 +29,9 @@ struct ContentView: View {
 
                 VStack {
                     ImageLoadable(
-                        loadable: URL(string: "https://broken.url"),
+                        source: "https://broken.url",
                         contentMode: .fit,
-                        placeholder: UIImage(named: "noImage")
+                        placeholder: UIImage(named: "imageLoadError")
                     )
                     .frame(width: 140, height: 140)
                     .background(Color.white)
@@ -45,7 +45,7 @@ struct ContentView: View {
 
             VStack {
                 ImageLoadable(
-                    loadable: "robot4H1",
+                    source: "robot4H1",
                     contentMode: .fit
                 )
                 .frame(width: 140, height: 140)

@@ -39,12 +39,12 @@ public struct ImageLoadable: View {
     ///   - renderingMode: `optional` image template rendering mode `template` or `original`. Default `original`.
     ///   - placeholder: `optional` image placeholder initialized with UIImage. Default placeholder provided.
     public init(
-        loadable: Loadable?,
+        source: String,
         contentMode: ContentMode = .fit,
         renderingMode: Image.TemplateRenderingMode = .original,
         placeholder: UIImage? = nil
     ) {
-        self.imageManager = ImageManager(loadable: loadable)
+        self.imageManager = ImageManager(source: source)
         self.contentMode = contentMode
         self.renderingMode = renderingMode
         self.placeholder = placeholder

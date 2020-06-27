@@ -11,41 +11,62 @@ import SwiftUI
 public class ImageManager: ObservableObject {
     @Published public var state: ImageLoadState = .loading
 
-    private let loadable: Loadable?
+    private let source: String
 
     private var cancellable: AnyCancellable?
 
     public init(
-        loadable: Loadable?
+        source: String
     ) {
-        self.loadable = loadable
+        self.source = source
     }
 
     public func loadImage() {
-        guard let loadable = loadable
-        else {
-            state = .failed(.notExists)
-            return
-        }
+        state = .failed(.notExists)
 
-        cancellable =
-            loadable
-            .load()
+        let networkImagePublisher = URLLoadable(url: URL(string: source))
+        let localImagePublisher = UIImageLoadable(name: source)
+
+        localImagePublisher
+            .publisher
             .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] (completion) in
-                    switch completion {
+            .sink { [weak self] (completion) in
+                switch completion {
                     case .finished:
                         break
                     case .failure:
                         self?.state = .failed(.loadError)
-                    }
-                },
-                receiveValue: { [weak self] (image) in
-                    self?.state = .fetched(image)
                 }
-            )
+            } receiveValue: { [weak self] (image) in
+                self?.state = .fetched(image)
+            }
     }
+
+//    public func loadImage() {
+//        guard let loadable = loadable
+//        else {
+//            state = .failed(.notExists)
+//            return
+//        }
+//
+//        cancellable =
+//            loadable
+//            .load()
+//            .receive(on: DispatchQueue.main)
+//            .sink(
+//                receiveCompletion: { [weak self] (completion) in
+//                    switch completion {
+//                    case .finished:
+//                        break
+//                    case .failure:
+//                        self?.state = .failed(.loadError)
+//                    }
+//                },
+//                receiveValue: { [weak self] (image) in
+//                    self?.state = .fetched(image)
+//                }
+//            )
+//    }
 
     public func cancel() {
         cancellable?.cancel()
