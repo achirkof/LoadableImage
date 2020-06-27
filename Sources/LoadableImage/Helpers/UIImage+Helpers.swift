@@ -12,6 +12,7 @@ extension UIImage {
     }
 
     public static func noImage() -> UIImage {
-        return UIImage(named: "noImage")!.withRenderingMode(.alwaysTemplate)
+//        return UIImage(named: "noImage")!.withRenderingMode(.alwaysTemplate)
+        return UIImage(systemName: "rectangle.badge.xmark")!.withRenderingMode(.alwaysTemplate)
     }
 }

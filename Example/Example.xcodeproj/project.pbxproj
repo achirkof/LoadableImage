@@ -39,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		92B870EC24A7E7CE0078AFBE /* LoadableImage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoadableImage; path = ..; sourceTree = "<group>"; };
 		92BAB016240ACE8E00F3A3A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92EDE1EE23CB7D2800D6C26C /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92EDE1F123CB7D2800D6C26C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 		92EDE1E523CB7D2800D6C26C = {
 			isa = PBXGroup;
 			children = (
+				92B870EC24A7E7CE0078AFBE /* LoadableImage */,
 				92EDE1F023CB7D2800D6C26C /* Example */,
 				92EDE1EF23CB7D2800D6C26C /* Products */,
 				92EDE21323CB7DB800D6C26C /* Frameworks */,
