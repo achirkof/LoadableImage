@@ -6,7 +6,6 @@
 
 import SwiftUI
 
-
 /// Wrapper for the SwiftUI `Image` with loading indicator, caching and placeholder
 ///
 /// Initialization with UIImage `ImageLoadable(image:)`:
@@ -70,9 +69,7 @@ public struct ImageLoadable: View {
     private var contentView: AnyView {
         switch imageManager.state {
         case .loading:
-            return AnyView(
-                ActivityIndicator(isAnimating: true)
-            )
+            return AnyView(ProgressIndicator())
 
         case let .fetched(image):
             return AnyView(
