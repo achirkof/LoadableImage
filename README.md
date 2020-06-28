@@ -23,7 +23,7 @@ struct ContentView: View {
     var body: some View {
         HStack {
             ImageLoadable(
-                loadable: URL(string: "https://robohash.org/loadablerobot"),
+                source: "https://robohash.org/loadablerobot",
                 contentMode: .fit
             )
             .frame(width: 140, height: 140)
@@ -32,7 +32,7 @@ struct ContentView: View {
             .shadow(radius: 10)
 
             ImageLoadable(
-                loadable: "image_from_assets"
+                source: "image_from_assets"
             )
             .frame(width: 140, height: 140)
             .background(Color.white)
@@ -45,22 +45,12 @@ struct ContentView: View {
 
 ```
 
-You can also use loadable image as a property in your model and it Decodes from JSON. For example
+It's also possible and very convenient while unit testing or using [Xcode preview](https://developer.apple.com/videos/play/wwdc2019/233/) to create mock objects with local image even though in real life you load image from network. For example:
 
 ```swift
-struct Robot: Decodable {
-    var name: String
-    var localImage: AnyImageLoadable<String>? // for image from assets
-    var remoteImage: AnyImageLoadable<URL>? // for image from network
-}
-```
-
-It's also possible and very convenient while unit testing or using [Xcode preview](https://developer.apple.com/videos/play/wwdc2019/233/) to create mock objects with image. For example:
-
-```swift
-let robot: Robot = Robot(
+let robotFixture: Robot = Robot(
     name: "Bender",
-    image: URL(string: "https://robohash.org/loadablerobot")?.eraseToAnyLoadable()
+    image: "image_from_assets
 )
 ```
 
@@ -74,7 +64,7 @@ Once you have your Swift package set up, adding LoadableImage as a dependency is
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "1.0.0-beta.1")
+    .package(url: "https://github.com/achirkof/LoadableImage.git", from: "1.0.0")
 ]
 ```
 
@@ -85,5 +75,5 @@ Or just add package to your project:
 ### Future plans
 - [x] Make `ImageLoadable` possible to work also with images from `Assets` catalog 
 - [x] Use URL caching to reduce network traffic and increase image loading speed
-- [x] Make `ImageLoadable` Decodable to be able use it as type in the model
+- [x] Make `ImageLoadable` Codable to be able use it as type in the model
 - [ ] Rewrite from `dataTask` to `downloadTask` to decrease memory usage for big images
