@@ -76,7 +76,7 @@ public struct ImageLoadable: View {
 
         case let .fetched(image):
             return AnyView(
-                Image(uiImage: image)
+                Image(image: image)
                     .resizable()
                     .renderingMode(renderingMode)
                     .aspectRatio(contentMode: contentMode)

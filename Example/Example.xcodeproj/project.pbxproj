@@ -15,16 +15,6 @@
 		92EDE26723CBC05800D6C26C /* LoadableImage in Frameworks */ = {isa = PBXBuildFile; productRef = 92EDE26623CBC05800D6C26C /* LoadableImage */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		92EDE20523CB7D2A00D6C26C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92EDE1E623CB7D2800D6C26C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 92EDE1ED23CB7D2800D6C26C;
-			remoteInfo = LoadableImageExample;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		92EDE22723CB8D7600D6C26C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -40,14 +30,12 @@
 
 /* Begin PBXFileReference section */
 		92BAB016240ACE8E00F3A3A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		92C2E80924A90A300035BA08 /* LoadableImage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoadableImage; path = ..; sourceTree = "<group>"; };
-		92EDE1EE23CB7D2800D6C26C /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92EDE1EE23CB7D2800D6C26C /* Example-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92EDE1F123CB7D2800D6C26C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92EDE1F323CB7D2800D6C26C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		92EDE1F523CB7D2800D6C26C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		92EDE1FD23CB7D2900D6C26C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92EDE1FF23CB7D2900D6C26C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92EDE20423CB7D2A00D6C26C /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,21 +47,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92EDE20123CB7D2A00D6C26C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		92EDE1E523CB7D2800D6C26C = {
 			isa = PBXGroup;
 			children = (
-				92C2E80924A90A300035BA08 /* LoadableImage */,
-				92EDE1F023CB7D2800D6C26C /* Example */,
+				92EDE1F023CB7D2800D6C26C /* Example-iOS */,
 				92EDE1EF23CB7D2800D6C26C /* Products */,
 				92EDE21323CB7DB800D6C26C /* Frameworks */,
 			);
@@ -82,13 +62,12 @@
 		92EDE1EF23CB7D2800D6C26C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				92EDE1EE23CB7D2800D6C26C /* Example.app */,
-				92EDE20423CB7D2A00D6C26C /* ExampleTests.xctest */,
+				92EDE1EE23CB7D2800D6C26C /* Example-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		92EDE1F023CB7D2800D6C26C /* Example */ = {
+		92EDE1F023CB7D2800D6C26C /* Example-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				92BAB016240ACE8E00F3A3A8 /* Assets.xcassets */,
@@ -98,7 +77,7 @@
 				92EDE1FC23CB7D2900D6C26C /* LaunchScreen.storyboard */,
 				92EDE1FF23CB7D2900D6C26C /* Info.plist */,
 			);
-			path = Example;
+			path = "Example-iOS";
 			sourceTree = "<group>";
 		};
 		92EDE21323CB7DB800D6C26C /* Frameworks */ = {
@@ -111,9 +90,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		92EDE1ED23CB7D2800D6C26C /* Example */ = {
+		92EDE1ED23CB7D2800D6C26C /* Example-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92EDE20D23CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "Example" */;
+			buildConfigurationList = 92EDE20D23CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "Example-iOS" */;
 			buildPhases = (
 				92EDE1EA23CB7D2800D6C26C /* Sources */,
 				92EDE1EB23CB7D2800D6C26C /* Frameworks */,
@@ -124,31 +103,13 @@
 			);
 			dependencies = (
 			);
-			name = Example;
+			name = "Example-iOS";
 			packageProductDependencies = (
 				92EDE26623CBC05800D6C26C /* LoadableImage */,
 			);
 			productName = LoadableImageExample;
-			productReference = 92EDE1EE23CB7D2800D6C26C /* Example.app */;
+			productReference = 92EDE1EE23CB7D2800D6C26C /* Example-iOS.app */;
 			productType = "com.apple.product-type.application";
-		};
-		92EDE20323CB7D2A00D6C26C /* ExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 92EDE21023CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "ExampleTests" */;
-			buildPhases = (
-				92EDE20023CB7D2A00D6C26C /* Sources */,
-				92EDE20123CB7D2A00D6C26C /* Frameworks */,
-				92EDE20223CB7D2A00D6C26C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				92EDE20623CB7D2A00D6C26C /* PBXTargetDependency */,
-			);
-			name = ExampleTests;
-			productName = LoadableImageExampleTests;
-			productReference = 92EDE20423CB7D2A00D6C26C /* ExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -162,10 +123,6 @@
 				TargetAttributes = {
 					92EDE1ED23CB7D2800D6C26C = {
 						CreatedOnToolsVersion = 11.3;
-					};
-					92EDE20323CB7D2A00D6C26C = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = 92EDE1ED23CB7D2800D6C26C;
 					};
 				};
 			};
@@ -185,8 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				92EDE1ED23CB7D2800D6C26C /* Example */,
-				92EDE20323CB7D2A00D6C26C /* ExampleTests */,
+				92EDE1ED23CB7D2800D6C26C /* Example-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +154,6 @@
 			files = (
 				92BAB017240ACE8E00F3A3A8 /* Assets.xcassets in Resources */,
 				92EDE1FE23CB7D2900D6C26C /* LaunchScreen.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		92EDE20223CB7D2A00D6C26C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,22 +170,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92EDE20023CB7D2A00D6C26C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		92EDE20623CB7D2A00D6C26C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 92EDE1ED23CB7D2800D6C26C /* Example */;
-			targetProxy = 92EDE20523CB7D2A00D6C26C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		92EDE1FC23CB7D2900D6C26C /* LaunchScreen.storyboard */ = {
@@ -374,7 +308,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = MMS552F7Y5;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "Example-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,7 +328,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = MMS552F7Y5;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "Example-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,50 +337,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		92EDE21123CB7D2A00D6C26C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MMS552F7Y5;
-				INFOPLIST_FILE = LoadableImageExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.smartfitness.smartfit.LoadableImageExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
-			};
-			name = Debug;
-		};
-		92EDE21223CB7D2A00D6C26C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MMS552F7Y5;
-				INFOPLIST_FILE = LoadableImageExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.smartfitness.smartfit.LoadableImageExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;
 		};
@@ -462,20 +352,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92EDE20D23CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "Example" */ = {
+		92EDE20D23CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "Example-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92EDE20E23CB7D2A00D6C26C /* Debug */,
 				92EDE20F23CB7D2A00D6C26C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		92EDE21023CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				92EDE21123CB7D2A00D6C26C /* Debug */,
-				92EDE21223CB7D2A00D6C26C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "92EDE1ED23CB7D2800D6C26C"
-               BuildableName = "Example.app"
-               BlueprintName = "Example"
+               BuildableName = "Example-iOS.app"
+               BlueprintName = "Example-iOS"
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,18 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES"
-            testExecutionOrdering = "random">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "LoadableImageTests"
-               BuildableName = "LoadableImageTests"
-               BlueprintName = "LoadableImageTests"
-               ReferencedContainer = "container:..">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -58,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "92EDE1ED23CB7D2800D6C26C"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
+            BuildableName = "Example-iOS.app"
+            BlueprintName = "Example-iOS"
             ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "92EDE1ED23CB7D2800D6C26C"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
+            BuildableName = "Example-iOS.app"
+            BlueprintName = "Example-iOS"
             ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

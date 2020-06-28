@@ -4,6 +4,12 @@
 //  Created by CHIRKOV Andrey on 26.01.2020.
 //
 
+#if os(iOS)
+    import UIKit
+#elseif os(OSX)
+    import AppKit
+#endif
+
 import Combine
 import LoadableImage
 import XCTest
@@ -58,7 +64,7 @@ class ImageManagerTests: XCTestCase {
         let local = UIImageLoadable(name: "image_not_exists").publisher
         let mockNetwork = Mock.makeMockNetwork(
             with: URL(string: "https://existed-image.url")!,
-            data: Stub.image.pngData()!,
+            data: Stub.image.data!,
             statusCode: 200
         )
         let network = URLLoadable(url: URL(string: "https://existed-image.url"), network: mockNetwork).publisher

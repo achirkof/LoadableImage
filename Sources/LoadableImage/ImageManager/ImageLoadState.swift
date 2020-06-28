@@ -4,7 +4,11 @@
 //  Created by CHIRKOV Andrey on 16.03.2020.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+#elseif os(OSX)
+    import AppKit
+#endif
 
 public enum ImageLoadState {
     case loading
@@ -12,6 +16,7 @@ public enum ImageLoadState {
     case failed(ImageLoadError)
 }
 
+@available(iOS 13.0, macOS 10.10, *)
 extension ImageLoadState: Equatable {
     public static func == (lhs: ImageLoadState, rhs: ImageLoadState) -> Bool {
         switch (lhs, rhs) {

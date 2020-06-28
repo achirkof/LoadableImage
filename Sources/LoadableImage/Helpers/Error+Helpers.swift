@@ -1,6 +1,5 @@
 //
 //  Error+Helpers.swift
-//  LoadableImage
 //
 //  Created by CHIRKOV Andrey on 26.01.2020.
 //

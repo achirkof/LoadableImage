@@ -4,6 +4,12 @@
 //  Created by CHIRKOV Andrey on 31.05.2020.
 //
 
+#if os(iOS)
+    import UIKit
+#elseif os(OSX)
+    import AppKit
+#endif
+
 import Combine
 import LoadableImage
 import XCTest
@@ -35,11 +41,11 @@ class URLLoadableTests: XCTestCase {
     }
 
     func test_load_withCorrectURL_shouldReturnImage() {
-        let url = URL(string: "https://robohash.org/loadablerobot")
-        let data = Stub.image.pngData()
-        let mockNetwork = Mock.makeMockNetwork(with: url!, data: data!, statusCode: 200)
+        let url = URL(string: "https://robohash.org/loadablerobot")!
+        let data = Stub.image.data!
+        let mockNetwork = Mock.makeMockNetwork(with: url, data: data, statusCode: 200)
         let sut = URLLoadable(url: url, network: mockNetwork)
-        let expectation = XCTestExpectation(description: "Downloading from " + "\(url?.absoluteString ?? "URL")")
+        let expectation = XCTestExpectation(description: "Downloading from " + "\(url.absoluteString)")
 
         let loadImagePublisher = sut.publisher
             .sink(

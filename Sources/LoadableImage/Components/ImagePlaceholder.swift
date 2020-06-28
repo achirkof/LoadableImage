@@ -16,6 +16,6 @@ public struct ImagePlaceholder: View {
     }
 
     public var body: some View {
-        Image(uiImage: placeholder)
+        Image(image: placeholder)
     }
 }

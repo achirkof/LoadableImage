@@ -4,9 +4,15 @@
 //  Created by CHIRKOV Andrey on 06.06.2020.
 //
 
+#if os(iOS)
+    import UIKit
+#elseif os(OSX)
+    import AppKit
+#endif
+
 import Combine
 import LoadableImage
-import UIKit
+import Foundation
 
 enum Mock {}
 

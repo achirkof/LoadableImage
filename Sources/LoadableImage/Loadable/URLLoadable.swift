@@ -4,9 +4,15 @@
 //  Created by CHIRKOV Andrey on 24.05.2020.
 //
 
-import Combine
-import UIKit
+#if os(iOS)
+    import UIKit
+#elseif os(OSX)
+    import AppKit
+#endif
 
+import Combine
+
+@available(iOS 13.0, macOS 10.15, *)
 public class URLLoadable: PublisherProvider {
     private let url: URL?
     private let network: NetworkProvider
@@ -47,6 +53,7 @@ public class URLLoadable: PublisherProvider {
     }
 }
 
+@available(iOS 13.0, macOS 10.15, *)
 extension URLLoadable: Equatable {
     public static func == (lhs: URLLoadable, rhs: URLLoadable) -> Bool {
         return lhs.url == rhs.url

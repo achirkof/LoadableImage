@@ -4,9 +4,15 @@
 //  Created by CHIRKOV Andrey on 30.05.2020.
 //
 
-import Combine
-import UIKit
+#if os(iOS)
+    import UIKit
+#elseif os(OSX)
+    import AppKit
+#endif
 
+import Combine
+
+@available(iOS 13.0, macOS 10.15, *)
 public final class UIImageLoadable: PublisherProvider {
     private let name: String
     private let assets: AssetsProvider
@@ -25,6 +31,7 @@ public final class UIImageLoadable: PublisherProvider {
     }
 }
 
+@available(iOS 13.0, macOS 10.15, *)
 extension UIImageLoadable: Equatable {
     public static func == (lhs: UIImageLoadable, rhs: UIImageLoadable) -> Bool {
         return lhs.name == rhs.name
