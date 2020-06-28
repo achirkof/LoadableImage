@@ -12,6 +12,6 @@ extension UIImage {
     }
 
     public static func noImage() -> UIImage {
-        return UIImage(named: "noImage")!.withRenderingMode(.alwaysTemplate)
+        return UIImage(named: "noImage", in: Bundle.module, compatibleWith: nil)!.withRenderingMode(.alwaysTemplate)
     }
 }

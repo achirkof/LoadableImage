@@ -13,7 +13,7 @@ class UIImageLoadableTests: XCTestCase {
         let sut = UIImageLoadable(name: "", assets: assetsMock)
         let expectation = XCTestExpectation(description: "Loading image from assets catalog")
 
-        let loadImagePublisher = sut.load()
+        let loadImagePublisher = sut.publisher
             .sink(
                 receiveCompletion: { (completion) in
                     switch completion {
@@ -39,7 +39,7 @@ class UIImageLoadableTests: XCTestCase {
         let sut = UIImageLoadable(name: "", assets: assetsMock)
         let expectation = XCTestExpectation(description: "Loading image from assets catalog")
 
-        let loadImagePublisher = sut.load()
+        let loadImagePublisher = sut.publisher
             .sink(
                 receiveCompletion: { (completion) in
                     switch completion {
@@ -72,23 +72,5 @@ class UIImageLoadableTests: XCTestCase {
         let loadable2 = UIImageLoadable(name: "imageTwo")
 
         XCTAssertNotEqual(loadable1, loadable2)
-    }
-
-    func test_decodable_withAssetsImage_shouldDecodeSuccessful() {
-        let expected = RobotAssetsImage(
-            name: "Robot-1",
-            image: "robot4H1".eraseToAnyLoadable()
-        )
-
-        let decoded = try! JSONDecoder().decode(RobotAssetsImage.self, from: Stub.robotWithAssetsImage.data(using: .utf8)!)
-
-        XCTAssertEqual(decoded, expected)
-    }
-}
-
-extension UIImageLoadableTests {
-    struct RobotAssetsImage: Equatable, Decodable {
-        var name: String
-        var image: AnyImageLoadable<String>?
     }
 }

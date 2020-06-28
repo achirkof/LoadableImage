@@ -11,43 +11,40 @@ import SwiftUI
 public class ImageManager: ObservableObject {
     @Published public var state: ImageLoadState = .loading
 
-    private let loadable: Loadable?
+    private let networkImagePublisher: AnyPublisher<UIImage, ImageLoadError>
+    private let localImagePublisher: AnyPublisher<UIImage, ImageLoadError>
 
-    private var cancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
 
     public init(
-        loadable: Loadable?
+        localImagePublisher: AnyPublisher<UIImage, ImageLoadError>,
+        networkImagePublisher: AnyPublisher<UIImage, ImageLoadError>
     ) {
-        self.loadable = loadable
+        self.localImagePublisher = localImagePublisher
+        self.networkImagePublisher = networkImagePublisher
     }
 
     public func loadImage() {
-        guard let loadable = loadable
-        else {
-            state = .failed(.notExists)
-            return
-        }
-
-        cancellable =
-            loadable
-            .load()
+        localImagePublisher
+            .catch { _ in
+                self.networkImagePublisher
+            }
             .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] (completion) in
-                    switch completion {
+            .sink { [weak self] (completion) in
+                switch completion {
                     case .finished:
                         break
                     case .failure:
                         self?.state = .failed(.loadError)
-                    }
-                },
-                receiveValue: { [weak self] (image) in
-                    self?.state = .fetched(image)
                 }
-            )
+            } receiveValue: { [weak self] (image) in
+                self?.state = .fetched(image)
+            }.store(in: &cancellables)
+
     }
 
     public func cancel() {
-        cancellable?.cancel()
+        _ = cancellables
+            .compactMap { $0.cancel() }
     }
 }

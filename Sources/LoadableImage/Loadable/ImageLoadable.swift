@@ -8,18 +8,18 @@ import SwiftUI
 
 /// Wrapper for the SwiftUI `Image` with loading indicator, caching and placeholder
 ///
-/// Initialization with UIImage `ImageLoadable(image:)`:
+/// Initialization with image name from Assets `String` `ImageLoadable(source:)`:
 ///
 ///     ImageLoadable(
-///         image: UIImage(named: "robot"),
+///         source: "robot",
 ///         contentMode: .fit
 ///     )
 ///
 ///
-/// Initialization with URL `ImageLoadable(url:)`:
+/// Initialization with image source `URL` represented by `String` `ImageLoadable(source:)`:
 ///
 ///     ImageLoadable(
-///         url: URL(url: "https://robots.com/robot.png"),
+///         source: "https://robots.com/robot.png",
 ///         contentMode: .fit
 ///     )
 ///
@@ -34,17 +34,20 @@ public struct ImageLoadable: View {
 
     /// Initialization with Loadable
     /// - Parameters:
-    ///   - image: Image to put
+    ///   - source: source of the image
     ///   - contentMode: `optional` image content mode `fit` or `fill`. Default `fit`.
     ///   - renderingMode: `optional` image template rendering mode `template` or `original`. Default `original`.
     ///   - placeholder: `optional` image placeholder initialized with UIImage. Default placeholder provided.
     public init(
-        loadable: Loadable?,
+        source: String,
         contentMode: ContentMode = .fit,
         renderingMode: Image.TemplateRenderingMode = .original,
         placeholder: UIImage? = nil
     ) {
-        self.imageManager = ImageManager(loadable: loadable)
+        self.imageManager = ImageManager(
+            localImagePublisher: UIImageLoadable(name: source).publisher,
+            networkImagePublisher: URLLoadable(url: URL(string: source)).publisher
+        )
         self.contentMode = contentMode
         self.renderingMode = renderingMode
         self.placeholder = placeholder

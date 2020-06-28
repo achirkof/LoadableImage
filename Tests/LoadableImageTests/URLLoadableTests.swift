@@ -13,7 +13,7 @@ class URLLoadableTests: XCTestCase {
         let sut = URLLoadable(url: nil)
         let expectation = XCTestExpectation(description: "Downloading from Nil URL")
 
-        let loadImagePublisher = sut.load()
+        let loadImagePublisher = sut.publisher
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -41,7 +41,7 @@ class URLLoadableTests: XCTestCase {
         let sut = URLLoadable(url: url, network: mockNetwork)
         let expectation = XCTestExpectation(description: "Downloading from " + "\(url?.absoluteString ?? "URL")")
 
-        let loadImagePublisher = sut.load()
+        let loadImagePublisher = sut.publisher
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -67,7 +67,7 @@ class URLLoadableTests: XCTestCase {
         let sut = URLLoadable(url: url)
         let expectation = XCTestExpectation(description: "Downloading from " + "\(url?.absoluteString ?? "URL")")
 
-        let loadImagePublisher = sut.load()
+        let loadImagePublisher = sut.publisher
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -95,7 +95,7 @@ class URLLoadableTests: XCTestCase {
         let sut = URLLoadable(url: url, network: mockNetwork)
         let expectation = XCTestExpectation(description: "Downloading from " + "\(url?.absoluteString ?? "URL")")
 
-        let loadImagePublisher = sut.load()
+        let loadImagePublisher = sut.publisher
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -123,7 +123,7 @@ class URLLoadableTests: XCTestCase {
         let sut = URLLoadable(url: url, network: mockNetwork)
         let expectation = XCTestExpectation(description: "Downloading from " + "\(url.absoluteString)")
 
-        let loadImagePublisher = sut.load()
+        let loadImagePublisher = sut.publisher
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -156,23 +156,5 @@ class URLLoadableTests: XCTestCase {
         let loadable2 = URL(string: "https://robohash.org/loadablerobot2")
 
         XCTAssertNotEqual(loadable1, loadable2)
-    }
-
-    func test_decodable_withURLImage_shouldDecodeSuccessful() {
-        let expected = RobotURLImage(
-            name: "Robot-1",
-            image: URL(string: "https://robohash.org/loadablerobot")?.eraseToAnyLoadable()
-        )
-
-        let decoded = try! JSONDecoder().decode(RobotURLImage.self, from: Stub.robotWithURLImage.data(using: .utf8)!)
-
-        XCTAssertEqual(decoded, expected)
-    }
-}
-
-extension URLLoadableTests {
-    struct RobotURLImage: Equatable, Decodable {
-        var name: String
-        var image: AnyImageLoadable<URL>?
     }
 }

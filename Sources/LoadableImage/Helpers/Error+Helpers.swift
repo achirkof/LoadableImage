@@ -8,7 +8,7 @@
 import Foundation
 
 /**
- This is a equality on any 2 instance of Error.
+ This is an equality on any 2 instance of Error.
  */
 
 public func areEqual(_ lhs: Error, _ rhs: Error) -> Bool {

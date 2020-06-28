@@ -7,7 +7,7 @@
 import Combine
 import UIKit
 
-public class URLLoadable: Loadable {
+public class URLLoadable: PublisherProvider {
     private let url: URL?
     private let network: NetworkProvider
 
@@ -19,7 +19,7 @@ public class URLLoadable: Loadable {
         self.network = network
     }
 
-    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
+    public var publisher: AnyPublisher<UIImage, ImageLoadError> {
         guard let url = url else {
             return Fail<UIImage, ImageLoadError>(error: ImageLoadError.notExists)
                 .eraseToAnyPublisher()
@@ -50,12 +50,5 @@ public class URLLoadable: Loadable {
 extension URLLoadable: Equatable {
     public static func == (lhs: URLLoadable, rhs: URLLoadable) -> Bool {
         return lhs.url == rhs.url
-    }
-}
-
-extension URL: Loadable {
-    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
-        let loadable = URLLoadable(url: self)
-        return loadable.load()
     }
 }
