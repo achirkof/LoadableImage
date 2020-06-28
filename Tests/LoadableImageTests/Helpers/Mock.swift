@@ -26,7 +26,7 @@ extension Mock {
 
         public func publisher(
             for url: URL,
-            cachePolicy: URLRequest.CachePolicy = .reloadRevalidatingCacheData
+            cachePolicy: URLRequest.CachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         ) -> AnyPublisher<Output, URLError> {
             return Just((data: data, response: response))
                 .setFailureType(to: URLError.self)
