@@ -19,10 +19,6 @@ let package = Package(
             exclude: [
                 "Example",
                 "Resources/noImage.svg"
-            ],
-            resources: [
-                .process("Resources/noImage.png")
-//                .process("Resources/noImage.svg")
             ]
         ),
         .testTarget(
