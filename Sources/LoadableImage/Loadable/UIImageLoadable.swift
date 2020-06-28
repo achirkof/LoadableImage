@@ -19,11 +19,6 @@ public final class UIImageLoadable: PublisherProvider {
         self.assets = assets
     }
 
-//    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
-//        return assets.publisher(for: name)
-//            .eraseToAnyPublisher()
-//    }
-
     public var publisher: AnyPublisher<UIImage, ImageLoadError> {
         return assets.publisher(for: name)
             .eraseToAnyPublisher()
@@ -34,14 +29,4 @@ extension UIImageLoadable: Equatable {
     public static func == (lhs: UIImageLoadable, rhs: UIImageLoadable) -> Bool {
         return lhs.name == rhs.name
     }
-}
-
-//extension String: Loadable {
-//    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
-//        return UIImageLoadable(name: self).publisher
-//    }
-//}
-
-protocol PublisherProvider {
-    var publisher: AnyPublisher<UIImage, ImageLoadError> { get }
 }

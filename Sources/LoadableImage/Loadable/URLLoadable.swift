@@ -19,33 +19,6 @@ public class URLLoadable: PublisherProvider {
         self.network = network
     }
 
-//    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
-//        guard let url = url else {
-//            return Fail<UIImage, ImageLoadError>(error: ImageLoadError.notExists)
-//                .eraseToAnyPublisher()
-//        }
-//
-//        return network.publisher(for: url, cachePolicy: .reloadRevalidatingCacheData)
-//            .tryMap { (data, response) in
-//                guard
-//                    let httpResponse = response as? HTTPURLResponse,
-//                    httpResponse.statusCode == 200
-//                else {
-//                    throw ImageLoadError.loadError
-//                }
-//
-//                guard let image = UIImage(data: data) else {
-//                    throw ImageLoadError.loadError
-//                }
-//
-//                return image
-//            }
-//            .mapError { error -> ImageLoadError in
-//                return ImageLoadError.loadError
-//            }
-//            .eraseToAnyPublisher()
-//    }
-
     public var publisher: AnyPublisher<UIImage, ImageLoadError> {
         guard let url = url else {
             return Fail<UIImage, ImageLoadError>(error: ImageLoadError.notExists)
@@ -79,9 +52,3 @@ extension URLLoadable: Equatable {
         return lhs.url == rhs.url
     }
 }
-
-//extension URL: Loadable {
-//    public func load() -> AnyPublisher<UIImage, ImageLoadError> {
-//        return URLLoadable(url: self).publisher
-//    }
-//}

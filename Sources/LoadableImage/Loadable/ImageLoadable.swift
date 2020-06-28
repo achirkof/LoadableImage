@@ -44,7 +44,10 @@ public struct ImageLoadable: View {
         renderingMode: Image.TemplateRenderingMode = .original,
         placeholder: UIImage? = nil
     ) {
-        self.imageManager = ImageManager(source: source)
+        self.imageManager = ImageManager(
+            localImagePublisher: UIImageLoadable(name: source).publisher,
+            networkImagePublisher: URLLoadable(url: URL(string: source)).publisher
+        )
         self.contentMode = contentMode
         self.renderingMode = renderingMode
         self.placeholder = placeholder

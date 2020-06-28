@@ -16,10 +16,7 @@ let package = Package(
     targets: [
         .target(
             name: "LoadableImage",
-            exclude: [
-                "Example",
-                "Resources/noImage.svg"
-            ]
+            exclude: ["Example"]
         ),
         .testTarget(
             name: "LoadableImageTests",

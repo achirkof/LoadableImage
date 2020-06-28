@@ -157,22 +157,4 @@ class URLLoadableTests: XCTestCase {
 
         XCTAssertNotEqual(loadable1, loadable2)
     }
-
-//    func test_decodable_withURLImage_shouldDecodeSuccessful() {
-//        let expected = RobotURLImage(
-//            name: "Robot-1",
-//            image: "https://robohash.org/loadablerobot"
-//        )
-//
-//        let decoded = try! JSONDecoder().decode(RobotURLImage.self, from: Stub.robotWithURLImage.data(using: .utf8)!)
-//
-//        XCTAssertEqual(decoded, expected)
-//    }
 }
-
-//extension URLLoadableTests {
-//    struct RobotURLImage: Equatable, Decodable {
-//        var name: String
-//        var image: AnyImageLoadable<URL>?
-//    }
-//}
