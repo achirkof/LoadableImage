@@ -1,6 +1,6 @@
 language:  swift
 os: ios
-osx_image: xcode11.6
+osx_image: xcode12
 script:
   - xcodebuild -scheme LoadableImage -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.6' build test
 after_success:
