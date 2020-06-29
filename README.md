@@ -2,7 +2,8 @@
     <img align="left" width="50" src="../assets/LoadableImage-icon.png" alt="LoadableImage Header Logo"/> LoadableImage
 </h1>
 
-![Supported platforms](https://img.shields.io/badge/platform-ios%20%7C%20osx-lightgrey)
+![iOS](https://img.shields.io/badge/iOS-11.0-lightgrey)
+![macOS](https://img.shields.io/badge/macOS-10.15-lightgrey)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/achirkof/LoadableImage?include_prereleases)
 ![Swift](https://github.com/achirkof/LoadableImage/workflows/Swift/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/achirkof/LoadableImage/branch/master/graph/badge.svg)](https://codecov.io/gh/achirkof/LoadableImage)
