@@ -16,7 +16,7 @@ let package = Package(
     targets: [
         .target(
             name: "LoadableImage",
-            exclude: ["../Example"]
+            exclude: ["../Example", "../danger"]
         ),
         .testTarget(
             name: "LoadableImageTests",
