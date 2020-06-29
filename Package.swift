@@ -17,7 +17,7 @@ let package = Package(
         .target(
             name: "LoadableImage",
             exclude: [
-                "../Example",
+                "Example",
                 "Dangerfile.swift",
                 "codecov.yml"
             ]

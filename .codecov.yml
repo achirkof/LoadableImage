@@ -3,7 +3,8 @@ coverage:
    round: down
    range: "80...100"
    ignore:
-     - "Helpers/.*"
+     - "Example/.*"
+     - "Sources/LoadableImage/Helpers/.*"
      - "Sources/LoadableImage/Components/.*"
      - "Sources/LoadableImage/Loadable/Providers/.*"
      - "Tests"
