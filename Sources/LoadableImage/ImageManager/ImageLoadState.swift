@@ -16,7 +16,7 @@ public enum ImageLoadState {
     case failed(ImageLoadError)
 }
 
-@available(iOS 13.0, macOS 10.10, *)
+@available(iOS 12.0, macOS 10.10, *)
 extension ImageLoadState: Equatable {
     public static func == (lhs: ImageLoadState, rhs: ImageLoadState) -> Bool {
         switch (lhs, rhs) {

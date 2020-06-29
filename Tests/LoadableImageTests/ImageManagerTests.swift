@@ -4,12 +4,6 @@
 //  Created by CHIRKOV Andrey on 26.01.2020.
 //
 
-#if os(iOS)
-    import UIKit
-#elseif os(OSX)
-    import AppKit
-#endif
-
 import Combine
 import LoadableImage
 import XCTest
