@@ -32,10 +32,10 @@ public class ImageManager: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] (completion) in
                 switch completion {
-                    case .finished:
-                        break
-                    case .failure:
-                        self?.state = .failed(.loadError)
+                case .finished:
+                    break
+                case .failure:
+                    self?.state = .failed(.loadError)
                 }
             } receiveValue: { [weak self] (image) in
                 self?.state = .fetched(image)

@@ -9,7 +9,7 @@
 import SwiftUI
 
 @main
-struct Example_macOSApp: App {
+struct MacOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

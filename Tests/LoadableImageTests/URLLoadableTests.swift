@@ -25,7 +25,7 @@ class URLLoadableTests: XCTestCase {
                         expectation.fulfill()
                     }
                 },
-                receiveValue: { image in
+                receiveValue: { _ in
                     XCTFail("Should not have received an image with the failed URL")
                 }
             )
@@ -79,7 +79,7 @@ class URLLoadableTests: XCTestCase {
                         expectation.fulfill()
                     }
                 },
-                receiveValue: { image in
+                receiveValue: { _ in
                     XCTFail("Should not have received an image with the failed URL")
                 }
             )
@@ -107,7 +107,7 @@ class URLLoadableTests: XCTestCase {
                         expectation.fulfill()
                     }
                 },
-                receiveValue: { image in
+                receiveValue: { _ in
                     XCTFail("Should not have received an image with the failed URL")
                 }
             )
@@ -135,7 +135,7 @@ class URLLoadableTests: XCTestCase {
                         expectation.fulfill()
                     }
                 },
-                receiveValue: { image in
+                receiveValue: { _ in
                     XCTFail("Should not have received an image with the failed URL")
                 }
             )

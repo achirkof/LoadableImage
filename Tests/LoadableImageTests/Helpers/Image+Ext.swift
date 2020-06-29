@@ -30,10 +30,11 @@
     }
 #elseif os(OSX)
     extension UIImage {
-        static func make(withColor color: NSColor, size: NSSize = NSSize(width: 1, height: 1)) -> UIImage {
+        static func make(withColor color: NSColor) -> UIImage {
+            let size = NSSize(width: 1, height: 1)
             let image = UIImage(size: size)
             image.lockFocus()
-            color.drawSwatch(in: NSMakeRect(0, 0, size.width, size.height))
+            color.drawSwatch(in: NSRect(x: 0, y: 0, width: size.width, height: size.height))
             image.unlockFocus()
             return image
         }

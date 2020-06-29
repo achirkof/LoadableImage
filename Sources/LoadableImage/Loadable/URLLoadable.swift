@@ -46,7 +46,7 @@ public class URLLoadable: PublisherProvider {
 
                 return image
             }
-            .mapError { error -> ImageLoadError in
+            .mapError { _ in
                 return ImageLoadError.loadError
             }
             .eraseToAnyPublisher()

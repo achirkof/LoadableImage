@@ -51,7 +51,7 @@ class UIImageLoadableTests: XCTestCase {
                         expectation.fulfill()
                     }
                 },
-                receiveValue: { image in
+                receiveValue: { _ in
                     XCTFail("Should not load an image if it's not in Assets catalog")
                 }
             )

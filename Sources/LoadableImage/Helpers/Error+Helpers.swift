@@ -21,8 +21,8 @@ public extension Error {
     }
 
     // Same typed Equality
-    func isEqual(to: Self) -> Bool {
-        return self.reflectedString == to.reflectedString
+    func isEqual(to error: Self) -> Bool {
+        return self.reflectedString == error.reflectedString
     }
 }
 
@@ -30,9 +30,9 @@ public extension NSError {
     // prevents scenario where one would cast swift Error to NSError
     // whereby losing the associatedvalue in Obj-C realm.
     // (IntError.unknown as NSError("some")).(IntError.unknown as NSError)
-    func isEqual(to: NSError) -> Bool {
+    func isEqual(to error: NSError) -> Bool {
         let lhs = self as Error
-        let rhs = to as Error
-        return self.isEqual(to) && lhs.reflectedString == rhs.reflectedString
+        let rhs = error as Error
+        return self.isEqual(error) && lhs.reflectedString == rhs.reflectedString
     }
 }

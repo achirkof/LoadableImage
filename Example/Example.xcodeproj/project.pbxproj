@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		925DC50D24A92D720096C14A /* Example_macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DC50C24A92D720096C14A /* Example_macOSApp.swift */; };
+		925DC50D24A92D720096C14A /* MacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DC50C24A92D720096C14A /* MacOSApp.swift */; };
 		925DC50F24A92D720096C14A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DC50E24A92D720096C14A /* ContentView.swift */; };
 		925DC51124A92D730096C14A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 925DC51024A92D730096C14A /* Assets.xcassets */; };
 		925DC51424A92D730096C14A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 925DC51324A92D730096C14A /* Preview Assets.xcassets */; };
@@ -33,15 +33,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		925DC50A24A92D720096C14A /* Example-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		925DC50C24A92D720096C14A /* Example_macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_macOSApp.swift; sourceTree = "<group>"; };
+		925DC50A24A92D720096C14A /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		925DC50C24A92D720096C14A /* MacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSApp.swift; sourceTree = "<group>"; };
 		925DC50E24A92D720096C14A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		925DC51024A92D730096C14A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		925DC51324A92D730096C14A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		925DC51524A92D730096C14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		925DC51624A92D730096C14A /* Example_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example_macOS.entitlements; sourceTree = "<group>"; };
 		92BAB016240ACE8E00F3A3A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		92EDE1EE23CB7D2800D6C26C /* Example-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		92EDE1EE23CB7D2800D6C26C /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92EDE1F123CB7D2800D6C26C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92EDE1F323CB7D2800D6C26C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		92EDE1F523CB7D2800D6C26C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,17 +68,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		925DC50B24A92D720096C14A /* Example-macOS */ = {
+		925DC50B24A92D720096C14A /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				925DC50C24A92D720096C14A /* Example_macOSApp.swift */,
+				925DC50C24A92D720096C14A /* MacOSApp.swift */,
 				925DC50E24A92D720096C14A /* ContentView.swift */,
 				925DC51024A92D730096C14A /* Assets.xcassets */,
 				925DC51524A92D730096C14A /* Info.plist */,
 				925DC51624A92D730096C14A /* Example_macOS.entitlements */,
 				925DC51224A92D730096C14A /* Preview Content */,
 			);
-			path = "Example-macOS";
+			path = macOS;
 			sourceTree = "<group>";
 		};
 		925DC51224A92D730096C14A /* Preview Content */ = {
@@ -92,8 +92,8 @@
 		92EDE1E523CB7D2800D6C26C = {
 			isa = PBXGroup;
 			children = (
-				92EDE1F023CB7D2800D6C26C /* Example-iOS */,
-				925DC50B24A92D720096C14A /* Example-macOS */,
+				92EDE1F023CB7D2800D6C26C /* iOS */,
+				925DC50B24A92D720096C14A /* macOS */,
 				92EDE1EF23CB7D2800D6C26C /* Products */,
 				92EDE21323CB7DB800D6C26C /* Frameworks */,
 			);
@@ -102,13 +102,13 @@
 		92EDE1EF23CB7D2800D6C26C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				92EDE1EE23CB7D2800D6C26C /* Example-iOS.app */,
-				925DC50A24A92D720096C14A /* Example-macOS.app */,
+				92EDE1EE23CB7D2800D6C26C /* iOS.app */,
+				925DC50A24A92D720096C14A /* macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		92EDE1F023CB7D2800D6C26C /* Example-iOS */ = {
+		92EDE1F023CB7D2800D6C26C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				92BAB016240ACE8E00F3A3A8 /* Assets.xcassets */,
@@ -118,7 +118,7 @@
 				92EDE1FC23CB7D2900D6C26C /* LaunchScreen.storyboard */,
 				92EDE1FF23CB7D2900D6C26C /* Info.plist */,
 			);
-			path = "Example-iOS";
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		92EDE21323CB7DB800D6C26C /* Frameworks */ = {
@@ -131,9 +131,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		925DC50924A92D720096C14A /* Example-macOS */ = {
+		925DC50924A92D720096C14A /* macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 925DC51724A92D730096C14A /* Build configuration list for PBXNativeTarget "Example-macOS" */;
+			buildConfigurationList = 925DC51724A92D730096C14A /* Build configuration list for PBXNativeTarget "macOS" */;
 			buildPhases = (
 				925DC50624A92D720096C14A /* Sources */,
 				925DC50724A92D720096C14A /* Frameworks */,
@@ -143,14 +143,14 @@
 			);
 			dependencies = (
 			);
-			name = "Example-macOS";
+			name = macOS;
 			productName = "Example-macOS";
-			productReference = 925DC50A24A92D720096C14A /* Example-macOS.app */;
+			productReference = 925DC50A24A92D720096C14A /* macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		92EDE1ED23CB7D2800D6C26C /* Example-iOS */ = {
+		92EDE1ED23CB7D2800D6C26C /* iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92EDE20D23CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "Example-iOS" */;
+			buildConfigurationList = 92EDE20D23CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "iOS" */;
 			buildPhases = (
 				92EDE1EA23CB7D2800D6C26C /* Sources */,
 				92EDE1EB23CB7D2800D6C26C /* Frameworks */,
@@ -161,12 +161,12 @@
 			);
 			dependencies = (
 			);
-			name = "Example-iOS";
+			name = iOS;
 			packageProductDependencies = (
 				92EDE26623CBC05800D6C26C /* LoadableImage */,
 			);
 			productName = LoadableImageExample;
-			productReference = 92EDE1EE23CB7D2800D6C26C /* Example-iOS.app */;
+			productReference = 92EDE1EE23CB7D2800D6C26C /* iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -203,8 +203,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				92EDE1ED23CB7D2800D6C26C /* Example-iOS */,
-				925DC50924A92D720096C14A /* Example-macOS */,
+				92EDE1ED23CB7D2800D6C26C /* iOS */,
+				925DC50924A92D720096C14A /* macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -236,7 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				925DC50F24A92D720096C14A /* ContentView.swift in Sources */,
-				925DC50D24A92D720096C14A /* Example_macOSApp.swift in Sources */,
+				925DC50D24A92D720096C14A /* MacOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,20 +269,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Example-macOS/Example_macOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Example-macOS/Preview Content\"";
-				DEVELOPMENT_TEAM = MMS552F7Y5;
+				DEVELOPMENT_ASSET_PATHS = "\"macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Example-macOS/Info.plist";
+				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.16;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LoadableImage.Example-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LoadableImage.macOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -294,20 +294,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Example-macOS/Example_macOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Example-macOS/Preview Content\"";
-				DEVELOPMENT_TEAM = MMS552F7Y5;
+				DEVELOPMENT_ASSET_PATHS = "\"macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Example-macOS/Info.plist";
+				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.16;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LoadableImage.Example-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LoadableImage.macOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -434,17 +434,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = MMS552F7Y5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Example-iOS/Info.plist";
+				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LoadableImage.Example-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LoadableImage.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,17 +456,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = MMS552F7Y5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Example-iOS/Info.plist";
+				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LoadableImage.Example-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LoadableImage.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -473,7 +477,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		925DC51724A92D730096C14A /* Build configuration list for PBXNativeTarget "Example-macOS" */ = {
+		925DC51724A92D730096C14A /* Build configuration list for PBXNativeTarget "macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				925DC51824A92D730096C14A /* Debug */,
@@ -491,7 +495,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92EDE20D23CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "Example-iOS" */ = {
+		92EDE20D23CB7D2A00D6C26C /* Build configuration list for PBXNativeTarget "iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92EDE20E23CB7D2A00D6C26C /* Debug */,

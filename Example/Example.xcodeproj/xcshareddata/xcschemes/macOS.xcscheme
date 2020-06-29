@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92EDE1ED23CB7D2800D6C26C"
-               BuildableName = "Example-iOS.app"
-               BlueprintName = "Example-iOS"
+               BlueprintIdentifier = "925DC50924A92D720096C14A"
+               BuildableName = "macOS.app"
+               BlueprintName = "macOS"
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,8 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
    </TestAction>
@@ -45,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92EDE1ED23CB7D2800D6C26C"
-            BuildableName = "Example-iOS.app"
-            BlueprintName = "Example-iOS"
+            BlueprintIdentifier = "925DC50924A92D720096C14A"
+            BuildableName = "macOS.app"
+            BlueprintName = "macOS"
             ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92EDE1ED23CB7D2800D6C26C"
-            BuildableName = "Example-iOS.app"
-            BlueprintName = "Example-iOS"
+            BlueprintIdentifier = "925DC50924A92D720096C14A"
+            BuildableName = "macOS.app"
+            BlueprintName = "macOS"
             ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
