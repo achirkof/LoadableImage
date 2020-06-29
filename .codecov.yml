@@ -4,6 +4,6 @@ coverage:
    range: "80...100"
    ignore:
      - "Helpers/.*"
-     - "LoadableImage/Components/.*"
-     - "LoadableImage/Loadable/Providers/.*"
+     - "Sources/LoadableImage/Components/.*"
+     - "Sources/LoadableImage/Loadable/Providers/.*"
      - "Tests"
