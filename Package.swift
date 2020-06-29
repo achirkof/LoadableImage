@@ -16,7 +16,11 @@ let package = Package(
     targets: [
         .target(
             name: "LoadableImage",
-            exclude: ["../Example", "../danger"]
+            exclude: [
+                "../Example",
+                "Dangerfile.swift",
+                "codecov.yml"
+            ]
         ),
         .testTarget(
             name: "LoadableImageTests",

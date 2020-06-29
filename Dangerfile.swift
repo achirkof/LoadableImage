@@ -1,7 +1,7 @@
 // Dangerfile.swift
 
 import Danger
-import DangerSwiftLint // package: https://github.com/ashfurrow/danger-swiftlint.git
+import DangerSwiftLint
 
 let danger = Danger()
 
@@ -21,4 +21,4 @@ if has_app_changes && !tests_updated {
     warn("The library files were changed, but the tests remained unmodified. Consider updating or adding to the tests to match the library changes.")
 }
 
-SwiftLint.lint(directory: "Sources", configFile: ".github/workflows/swiftlint.yml")
+SwiftLint.lint(configFile: ".github/workflows/swiftlint.yml")
