@@ -1,6 +1,7 @@
 // Dangerfile.swift
 
 import Danger
+import DangerSwiftLint
 
 let danger = Danger()
 
@@ -10,14 +11,14 @@ if danger.github.pullRequest.title.contains("[WIP]") {
 }
 
 // Warn when library files has been updated but not tests.
-let hasAppChanges = !danger.git.modifiedFiles.filter({file in
+let has_app_changes = !danger.git.modifiedFiles.filter({file in
     return file.contains("Sources")
 }).isEmpty
-let testsUpdated = !danger.git.modifiedFiles.filter({file in
+let tests_updated = !danger.git.modifiedFiles.filter({file in
     return file.contains("Tests")
 }).isEmpty
-if hasAppChanges && !testsUpdated {
-    warn("The library files were changed, but the tests remained unmodified.")
+if has_app_changes && !tests_updated {
+    warn("The library files were changed, but the tests remained unmodified. Consider updating or adding to the tests to match the library changes.")
 }
 
 SwiftLint.lint(configFile: ".github/workflows/swiftlint.yml")
