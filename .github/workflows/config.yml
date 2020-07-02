@@ -76,6 +76,5 @@ jobs:
       - name: Upload coverage
         uses: codecov/codecov-action@v1
         with:
-          file: ./coverage.xml
           flag: unittests
           fail_ci_if_error: true
