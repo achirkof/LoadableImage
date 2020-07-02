@@ -67,14 +67,21 @@ jobs:
     runs-on: macos-latest
     needs: Test
     steps:
-      - name: Checkout project
-        uses: actions/checkout@v2
-      - name: Download products
-        uses: actions/download-artifact@v1
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@master
         with:
-          name: Products
-      - name: Upload coverage
+          python-version: 3.7
+      - name: Generate coverage report
+        run: |
+          pip install pytest
+          pip install pytest-cov
+          pytest --cov=./ --cov-report=xml
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          flag: unittests
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
           fail_ci_if_error: true
