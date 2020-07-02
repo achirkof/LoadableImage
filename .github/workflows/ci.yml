@@ -23,5 +23,7 @@ jobs:
     name: Tests
     runs-on: macOS-latest
     steps:
+      - name: Checkout action
+        uses: actions/checkout@v2
       - name: Run tests
         run: swift test --enable-test-discovery --enable-code-coverage
