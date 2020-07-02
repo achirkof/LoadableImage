@@ -31,15 +31,46 @@ jobs:
             args: --failOnErrors --no-publish-check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+  Build:
+    name: Build
+    env:
+      SCHEME: "LoadableImage"
+      DEVICE: "iPhone 11"
+      DERIVED_DATA_PATH: "DerivedData"
+    runs-on: macOS-latest
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v2
+    - name: Build application
+      run: |
+        set -o pipefail && xcodebuild clean -scheme $SCHEME -destination "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH build-for-testing | xcpretty --color --simple
+    - name: Upload products
+      uses: actions/upload-artifact@v1
+      with:
+        name: Products
+        path: DerivedData/Build/Products
 
   Test:
-    name: Test action
+    name: Test
+    env:
+      DEVICE: "iPhone 11"
+      DERIVED_DATA_PATH: "DerivedData"
+      UNIT_TEST_TARGET: "LoadableImageTests"
     runs-on: macos-latest
+    needs: build
     steps:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_12.app
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Download products
+        uses: actions/download-artifact@v1
+        with:
+          name: Products
       - name: Run tests
-        run: swift test
+        run: |
+          set -o pipefail && xcodebuild test-without-building -xctestrun $(find . -type f -name "*.xctestrun") -destination "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH -enableCodeCoverage YES -only-testing:$UNIT_TEST_TARGET | xcpretty --color --simple
       - uses: codecov/codecov-action@v1
         with:
           file: ./coverage.xml
