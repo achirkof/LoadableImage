@@ -67,7 +67,12 @@ jobs:
     runs-on: macos-latest
     needs: Test
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Download products
+        uses: actions/download-artifact@v1
+        with:
+          name: Products
       - name: Setup Python
         uses: actions/setup-python@master
         with:
