@@ -35,18 +35,11 @@ jobs:
   Test:
     name: Test action
     runs-on: macos-latest
-    strategy: 
-      matrix:
-        destination: ['platform=macOS', 'platform=iOS Simulator,OS=13.6,name=iPhone 11']
-
     steps:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_12.app
       - name: Run tests
-        run: |
-          xcodebuild clean test -scheme LoadableImage -destination "${{ matrix.destination }}"
-        env: 
-          destination: ${{ matrix.destination }}
+        run: swift test
       - uses: codecov/codecov-action@v1
         with:
           file: ./coverage.xml

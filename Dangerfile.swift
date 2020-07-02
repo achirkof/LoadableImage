@@ -20,4 +20,4 @@ if hasAppChanges && !testsUpdated {
     warn("The library files were changed, but the tests remained unmodified.")
 }
 
-SwiftLint.lint(inline: true, configFile: ".github/workflows/swiftlint.yml", lintAllFiles: true)
+SwiftLint.lint(inline: true, lintAllFiles: true)
