@@ -40,16 +40,18 @@ jobs:
       DERIVED_DATA_PATH: "DerivedData"
     runs-on: macOS-latest
     steps:
-    - name: Checkout project
-      uses: actions/checkout@v2
-    - name: Build application
-      run: |
-        set -o pipefail && xcodebuild clean -scheme $SCHEME -destination "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH build-for-testing | xcpretty --color --simple
-    - name: Upload products
-      uses: actions/upload-artifact@v1
-      with:
-        name: Products
-        path: DerivedData/Build/Products
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_12.app
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Build application
+        run: |
+          set -o pipefail && xcodebuild clean -scheme $SCHEME -destination "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH build-for-testing | xcpretty --color --simple
+      - name: Upload products
+        uses: actions/upload-artifact@v1
+        with:
+          name: Products
+          path: DerivedData/Build/Products
 
   Test:
     name: Test
