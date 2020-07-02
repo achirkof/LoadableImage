@@ -22,7 +22,7 @@ jobs:
   Test:
     name: Tests
     container:
-      image: swiftlang:nightly-5.3
+      image: swiftlang/swift:nightly-5.3
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
