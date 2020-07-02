@@ -2,23 +2,12 @@ language:  swift
 os: osx
 osx_image: xcode12
 xcode_sdk: iphonesimulator14.0
-cache:
-  directories:
-  - .build
-  - ~/.danger-swift
 
 before_script:
   - set -o pipefail
 
 jobs:
   include:
-# ==============================================================================
-    - stage: danger
-      install:
-        - npm install -g danger
-        - swift build
-      script:
-        - swift run danger-swift ci
 # ==============================================================================
     - stage: test
       if: NOT (tag IS present)
