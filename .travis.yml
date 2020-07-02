@@ -3,11 +3,9 @@ os: osx
 osx_image: xcode12
 xcode_sdk: iphonesimulator14.0
 cache:
-directories:
-# General SwiftPM
-# Danger Swift plugins, like Yams
-- .build
-- ~/.danger-swift
+  directories:
+  - .build
+  - ~/.danger-swift
 
 before_script:
   - set -o pipefail
