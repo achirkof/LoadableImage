@@ -21,7 +21,7 @@ jobs:
 
   Test:
     name: Tests
-    runs-on: xcode-latest
+    runs-on: macOS-latest
     steps:
       - name: Run tests
         uses: Didstopia/SwiftAction@v1.0.1
