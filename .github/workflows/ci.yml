@@ -1,0 +1,30 @@
+name: Swift
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/swiftlint.yml'
+      - '**/*.swift'
+
+jobs:
+  SwiftLint:
+    name: SwiftLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout action
+        uses: actions/checkout@v2
+      - name: Linting
+        uses: norio-nomura/action-swiftlint@3.1.0
+
+  Test:
+    name: Tests
+    container:
+      image: swiftlang:nightly-5.3
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: swift test --enable-test-discovery --enable-code-coverage
+    - uses: mattpolzin/swift-codecov-action@0.4.0
