@@ -24,18 +24,4 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Run tests
-        uses: Didstopia/SwiftAction@v1.0.1
-        with:
-          swift-action: 'test'
-      - name: Collect coverage
-        uses: maxep/spm-lcov-action@0.3.0
-        with:
-          output-file: ./coverage/lcov.info
-      - name: Upload coverage
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/lcov.info
-          flags: unittests
-          name: codecov-umbrella
-          fail_ci_if_error: true
+        run: swift test --enable-test-discovery --enable-code-coverage
