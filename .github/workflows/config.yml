@@ -73,6 +73,8 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: Products
+      - name: List files
+        uses: ls -la DerivedData/Build/Products
       - name: Setup Python
         uses: actions/setup-python@master
         with:
@@ -81,7 +83,7 @@ jobs:
         run: |
           pip install pytest
           pip install pytest-cov
-          pytest --cov=$DERIVED_DATA_PATH/Build/Products --cov-report=xml
+          pytest --cov=DerivedData/Build/Products --cov-report=xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
