@@ -24,12 +24,14 @@ jobs:
     runs-on: xcode-latest
     steps:
       - name: Run tests
-        run: swift test --enable-code-coverage
+        uses: Didstopia/SwiftAction@v1.0.1
+        with:
+          swift-action: 'test'
       - name: Collect coverage
         uses: maxep/spm-lcov-action@0.3.0
         with:
           output-file: ./coverage/lcov.info
-      - name: Upload coverage to Codecov
+      - name: Upload coverage
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
